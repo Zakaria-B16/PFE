@@ -1,7 +1,0 @@
-- Latitude
-- Angle d'iclinaison 
-- Durée de la plus petite journée de l'année 
-- Durée de la plus grande journée de l'année 
-- Ensoleillement minimal et maximal
-- Périodes de mauvais temps prolongé ***
-
