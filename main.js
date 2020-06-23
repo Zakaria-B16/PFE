@@ -19,18 +19,19 @@ async function geocode(e) {
   try {
     // Get Data From Geocoding API
     const response = await axios.get(
-      "http://api.positionstack.com/v1/forward",
+      "https://us1.locationiq.com/v1/search.php",
       {
         params: {
-          access_key: "27d71a709f6f3241f02a9aff3f022c39",
-          query: location,
+          q: location,
+          key: "18c74e41edef57",
+          format: "json",
         },
       }
     );
 
     // Get Latitude And Longitude
-    let lat = response.data.data[0].latitude;
-    let lng = response.data.data[0].longitude;
+    let lat = response.data[0].lat;
+    let lng = response.data[0].lon;
 
     // Get Angle
     let angle = Math.abs(parseInt(lat)) + 10;
