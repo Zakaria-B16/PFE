@@ -5,6 +5,7 @@ let locationInput = document.getElementById("location-input");
 // Declare Variables
 let day1;
 let day2;
+let orientation;
 
 // Add Submit Event For FOrm
 locationForm.addEventListener("submit", geocode);
@@ -36,13 +37,20 @@ async function geocode(e) {
     // Get Angle
     let angle = Math.abs(parseInt(lat)) + 10;
 
-    // Choose The Day In term Of Latitude
+    // Get Complete Address
+    let addressName = response.data[0].display_name;
+
+    // Choose The Day And OrientationIn term Of Latitude
     if (lat > 0) {
       day1 = "2019-12-21";
       day2 = "2019-12-22";
+
+      orientation = "South";
     } else {
       day1 = "2019-06-21";
       day2 = "2019-06-22";
+
+      orientation = "North";
     }
 
     // Sunrise Function
@@ -87,7 +95,8 @@ async function geocode(e) {
               key: "b2c424f0030e4c1face1ee511232d4fd",
               start_date: day1,
               end_date: day2,
-              city: location,
+              lat: lat,
+              lon: lng,
             },
           }
         );
@@ -111,15 +120,22 @@ async function geocode(e) {
 
     SolarIrradiation();
 
+    // Render Complete Address
+    let addressOutput = `<h3>${addressName}</h3>`;
+
+    // Output Complete Address
+    document.getElementById("address").innerHTML = addressOutput;
+
     // Render Geometry
     let geomertyOutput = `<ul class="list-group">
                                   <li class="list-group-item"><strong>Latitude : </strong>${lat}</li>
                                   <li class="list-group-item"><strong>Longitude : </strong>${lng}</li>
                                   <li class="list-group-item"><strong>Angle Of Inclination : </strong>${angle}°</li>
+                                  <li class="list-group-item"><strong>Orientation : </strong>${orientation}°</li>
                             </ul>`;
 
     // Output GeoMetry
-    document.getElementById("address").innerHTML = geomertyOutput;
+    document.getElementById("geocode").innerHTML = geomertyOutput;
   } catch (error) {
     console.error(error);
   }
