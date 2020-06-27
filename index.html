@@ -13,20 +13,49 @@
   </head>
   <body>
     <div class="container">
-      <h2 class="mt-3">Enter Your Location :</h2>
-      <form id="location-form">
-        <input
-          type="text"
-          id="location-input"
-          class="form-control form-control-lg"
-        />
-        <br />
+      <h2 class="mt-3 text-center">PV Sizer</h2>
+      <form id="pv-form">
+        <div class="row">
+          <div class="col-lg-8 col-md-6">
+            <div>Enter your location</div>
+            <input
+              type="text"
+              id="location-input"
+              class="form-control mb-2"
+              placeholder="Location"
+              required
+            />
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div>Enter number day of autonomy</div>
+            <input
+              type="text"
+              id="number-day-input"
+              class="form-control mb-2"
+              placeholder="Days"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="container">
+          <div class="row justify-content-between">
+            <button class="add btn btn-success col-lg-9 col-md-7 mb-2">
+              Add Charge
+            </button>
+            <button class="delete btn btn-danger col-lg-2 col-md-4 mb-2">
+              Delete Charge
+            </button>
+          </div>
+        </div>
+        <div class="loads"></div>
+
         <button type="submit" class="btn btn-primary btn-block">SUBMIT</button>
       </form>
-      <div id="address" class="card-block mt-5 text-center"></div>
-      <div id="geocode" class="card-block mt-5"></div>
-      <div id="sun-data" class="card-block mt-5"></div>
-      <div id="solar-irradiation" class="card-block mt-5"></div>
+      <div id="address" class="card-block mt-2 text-center"></div>
+      <div id="geocode" class="card-block mt-2"></div>
+      <div id="solar-irradiation" class="card-block mt-2"></div>
+      <div id="pv-power" class="card-block mt-2"></div>
     </div>
     <script
       src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
@@ -44,6 +73,8 @@
       crossorigin="anonymous"
     ></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="main.js"></script>
+    <script type="module" src="js/main.js"></script>
+    <script type="module" src="js/calculation.js"></script>
+    <script type="module" src="js/charge.js"></script>
   </body>
 </html>
