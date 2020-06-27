@@ -27,7 +27,7 @@ add.addEventListener("click", (e) => {
   id="time"
   class="time col-md-4 mb-2 form-control"
   type="text"
-  placeholder="Use Time In Hours (ex:2)"
+  placeholder="Use Time In Hours (ex:3)"
   required
 />
   </div>`;
