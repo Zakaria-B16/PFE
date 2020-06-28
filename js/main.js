@@ -119,6 +119,8 @@ async function collect() {
   let pvPower;
   let sum;
   let battery;
+  let voltage;
+  let batteryNumber;
   try {
     let sol = await irradiation;
     document.querySelectorAll(".charge").forEach((charge) => {
@@ -134,12 +136,21 @@ async function collect() {
       total = [...total, energie];
     });
     sum = total.reduce((a, b) => a + b);
-    pvPower = (sum * 1000) / (sol * 0.6);
+    pvPower = (sum * 1000) / (sol * 0.65);
     pvPower = pvPower.toFixed(2);
-    battery = (days * pvPower) / (0.6 * 12);
+
+    if (pvPower < 500) {
+      voltage = 12;
+    } else if (500 <= pvPower < 2000) {
+      voltage = 24;
+    } else {
+      voltage = 48;
+    }
+    battery = (days * sum) / (0.8 * voltage);
     battery = battery.toFixed(2);
 
     let pv = `<ul class="list-group">
+    <li class="list-group-item"><strong> Daily Consomation : </strong>${sum} Wh/j </li>
     <li class="list-group-item"><strong> PV Power : </strong>${pvPower} Wc </li>
     <li class="list-group-item"><strong> Battery Capacity : </strong>${battery} Ah </li>
     </ul>`;
