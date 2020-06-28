@@ -9,7 +9,7 @@ add.addEventListener("click", (e) => {
   let newCharge = `<div class="charge row justify-content-between">
   <input
   id="number"
-  class="number col-md-3 mb-2 form-control"
+  class="number col-md-3 mb-1 mt-1 form-control"
   type="text"
   placeholder="Number (ex:2)"
   required
@@ -17,7 +17,7 @@ add.addEventListener("click", (e) => {
 
 <input
   id="power"
-  class="power col-md-4 mb-2 form-control"
+  class="power col-md-4 mb-1 mt-1 form-control"
   type="text"
   placeholder="Load Power in Watt (ex:120)"
   required
@@ -25,7 +25,7 @@ add.addEventListener("click", (e) => {
 
 <input
   id="time"
-  class="time col-md-4 mb-2 form-control"
+  class="time col-md-4 mb-1 mt-1 form-control"
   type="text"
   placeholder="Use Time In Hours (ex:3)"
   required

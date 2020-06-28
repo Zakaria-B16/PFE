@@ -1,0 +1,13 @@
+* {
+  margin: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.loads .container {
+  border-bottom: #cccccc solid 2px;
+}
+
+.loads .container:last-of-type {
+  border: none;
+}

@@ -126,10 +126,10 @@ async function collect() {
     document.querySelectorAll(".charge").forEach((charge) => {
       let elements = Array.from(charge.children);
       elements.forEach((element) => {
-        values = [element.value, ...values];
-        let number = parseFloat(values[0]);
-        let power = parseFloat(values[1]);
-        let time = parseFloat(values[2]);
+        values = [parseFloat(element.value), ...values];
+        let number = values[0];
+        let power = values[1];
+        let time = values[2];
         energie = number * power * time;
       });
 
