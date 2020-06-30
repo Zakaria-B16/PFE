@@ -1,5 +1,8 @@
+import { geocode, SolarIrradiation, calcul, popUp } from "./function.js";
+import { loads } from "./charge.js";
+
 // Select DOM Elements
-export const form = document.getElementById("pv-form");
+const form = document.getElementById("pv-form");
 const locationInput = document.getElementById("location-input");
 const dayInput = document.getElementById("number-day-input");
 
@@ -7,155 +10,81 @@ const dayInput = document.getElementById("number-day-input");
 let day1;
 let day2;
 let orientation;
-let lat;
-let lng;
 let location;
-var irradiation;
-export var rad;
 
 // Add Submit Event For FOrm
-form.addEventListener("submit", geocode);
+form.addEventListener("submit", (e) => PVSizer(e));
 
 // Geocode Function
-async function geocode(e) {
+const PVSizer = async (e) => {
   e.preventDefault();
 
-  // Get Location From Form
-  location = locationInput.value;
+  // Check For Charges
+  if (loads.childNodes.length === 0) {
+    popUp(form);
+  } else {
+    // Get Location From Form
+    location = locationInput.value;
 
-  try {
-    // Get Data From Geocoding API
-    const response = await axios.get(
-      "https://us1.locationiq.com/v1/search.php",
-      {
-        params: {
-          q: location,
-          key: "18c74e41edef57",
-          format: "json",
-        },
+    try {
+      // Get Data From Geocode Function
+      const [lat, lng, addressName, angle] = await geocode(location);
+
+      // Choose The Day And OrientationIn term Of Latitude
+      if (lat > 0) {
+        day1 = "2019-12-21";
+        day2 = "2019-12-22";
+
+        orientation = "South";
+      } else {
+        day1 = "2019-06-21";
+        day2 = "2019-06-22";
+
+        orientation = "North";
       }
-    );
 
-    // Get Latitude And Longitude
-    lat = response.data[0].lat;
-    lng = response.data[0].lon;
+      // Get Data From Solar Irradiation Function
+      const irradiation = await SolarIrradiation(day1, day2, lat, lng);
 
-    // Get Angle
-    let angle = Math.abs(parseInt(lat)) + 10;
+      // Get Data From Caculation Function
+      const [sum, pvPower, battery] = await calcul(dayInput, irradiation);
 
-    // Get Complete Address
-    let addressName = response.data[0].display_name;
+      // Render Complete Address
+      let addressOutput = `<h3><i class="fa fa-map-marker-alt" aria-hidden="true"></i> ${addressName}</h3>`;
 
-    // Choose The Day And OrientationIn term Of Latitude
-    if (lat > 0) {
-      day1 = "2019-12-21";
-      day2 = "2019-12-22";
-
-      orientation = "South";
-    } else {
-      day1 = "2019-06-21";
-      day2 = "2019-06-22";
-
-      orientation = "North";
-    }
-
-    SolarIrradiation();
-
-    // Render Complete Address
-    let addressOutput = `<h3>${addressName}</h3>`;
-
-    // Output Complete Address
-    document.getElementById("address").innerHTML = addressOutput;
-
-    // Render Geometry
-    let geomertyOutput = `<ul class="list-group">
-                                  <li class="list-group-item"><strong>Angle Of Inclination : </strong>${angle}°</li>
-                                  <li class="list-group-item"><strong>Orientation : </strong>${orientation}°</li>
+      // Render Geometry
+      let geomertyOutput = `<ul class="list-group">
+                                  <li class="list-group-item"><strong><i class="fab fa-audible"></i> <p>Angle Of Inclination :</p> </strong>${angle}°</li>
+                                  <li class="list-group-item"><strong><i class="fa fa-compass" aria-hidden="true"></i> <p>Orientation :</p> </strong>${orientation}°</li>
                             </ul>`;
 
-    // Output GeoMetry
-    document.getElementById("geocode").innerHTML = geomertyOutput;
-  } catch (error) {
-    console.error(error);
-  }
-}
+      // Render Solar Irradiation
+      let SolarOutput = `<ul class="list-group">
+                              <li class="list-group-item"><strong><i class="fa fa-sun" aria-hidden="true"></i> <p>Solar Irradiance On The ${day1} :</p> </strong>${irradiation} Wh/m^2 </li>
+                     </ul>`;
 
-// Solar Irradiation Function
-export const SolarIrradiation = async () => {
-  try {
-    const response = await axios.get(
-      "https://api.weatherbit.io/v2.0/history/daily",
-      {
-        params: {
-          key: "b2c424f0030e4c1face1ee511232d4fd",
-          start_date: day1,
-          end_date: day2,
-          lat: lat,
-          lon: lng,
-        },
-      }
-    );
+      // Render Daily Consomation PV Power & Battery Capacity
+      let pv = `<ul class="list-group">
+                     <li class="list-group-item"><strong><i class="fa fa-bolt" aria-hidden="true"></i> <p>Daily Consomation :</p> </strong>${sum} Wh/j </li>
+                     <li class="list-group-item"><strong><i class="fas fa-border-all"></i> <p>PV Power :</p> </strong>${pvPower} Wc </li>
+                     <li class="list-group-item"><strong><i class="fa fa-battery-three-quarters" aria-hidden="true"></i> <p>Battery Capacity :</p></strong>${battery} Ah </li>
+            </ul>`;
 
-    // Get Location Irradiation
-    irradiation = response.data.data[0].t_ghi;
+      // Output Complete Address
+      document.getElementById("address").innerHTML = addressOutput;
 
-    let SolarOutput = `<ul class="list-group">
-    <li class="list-group-item"><strong>Solar Irradiance On The ${day1} : </strong>${irradiation} Wh/m^2 </li>
-    </ul>`;
+      // Output GeoMetry
+      document.getElementById("geocode").innerHTML = geomertyOutput;
 
-    document.getElementById("solar-irradiation").innerHTML = SolarOutput;
-    collect();
-    return irradiation;
-  } catch (error) {
-    console.error(error);
+      // Output Irradiation
+      document.getElementById("solar-irradiation").innerHTML = SolarOutput;
+
+      // Output PV Sizing
+      document.getElementById("pv-power").innerHTML = pv;
+
+      console.log("yes");
+    } catch (error) {
+      console.error(error);
+    }
   }
 };
-
-async function collect() {
-  let days = parseInt(dayInput.value);
-  let energie = 0;
-  let values = [];
-  let total = [];
-  let pvPower;
-  let sum;
-  let battery;
-  let voltage;
-  let batteryNumber;
-  try {
-    let sol = await irradiation;
-    document.querySelectorAll(".charge").forEach((charge) => {
-      let elements = Array.from(charge.children);
-      elements.forEach((element) => {
-        values = [parseFloat(element.value), ...values];
-        let number = values[0];
-        let power = values[1];
-        let time = values[2];
-        energie = number * power * time;
-      });
-
-      total = [...total, energie];
-    });
-    sum = total.reduce((a, b) => a + b);
-    pvPower = (sum * 1000) / (sol * 0.65);
-    pvPower = pvPower.toFixed(2);
-
-    if (pvPower < 500) {
-      voltage = 12;
-    } else if (500 <= pvPower < 2000) {
-      voltage = 24;
-    } else {
-      voltage = 48;
-    }
-    battery = (days * sum) / (0.8 * voltage);
-    battery = battery.toFixed(2);
-
-    let pv = `<ul class="list-group">
-    <li class="list-group-item"><strong> Daily Consomation : </strong>${sum} Wh/j </li>
-    <li class="list-group-item"><strong> PV Power : </strong>${pvPower} Wc </li>
-    <li class="list-group-item"><strong> Battery Capacity : </strong>${battery} Ah </li>
-    </ul>`;
-    document.getElementById("pv-power").innerHTML = pv;
-  } catch {
-    console.error(error);
-  }
-}

@@ -1,4 +1,4 @@
-const loads = document.querySelector(".loads");
+export const loads = document.querySelector(".loads");
 const add = document.querySelector(".add");
 const del = document.querySelector(".delete");
 
@@ -11,7 +11,7 @@ add.addEventListener("click", (e) => {
   id="number"
   class="number col-md-3 mb-1 mt-1 form-control"
   type="text"
-  placeholder="Number (ex:2)"
+  placeholder="Number (ex : 2)"
   required
 />
 
@@ -19,7 +19,7 @@ add.addEventListener("click", (e) => {
   id="power"
   class="power col-md-4 mb-1 mt-1 form-control"
   type="text"
-  placeholder="Load Power in Watt (ex:120)"
+  placeholder="Load Power in Watt (ex : 120)"
   required
 />
 
@@ -27,7 +27,7 @@ add.addEventListener("click", (e) => {
   id="time"
   class="time col-md-4 mb-1 mt-1 form-control"
   type="text"
-  placeholder="Use Time In Hours (ex:3)"
+  placeholder="Use Time In Hours (ex : 3)"
   required
 />
   </div>`;
