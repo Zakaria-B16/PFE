@@ -1,4 +1,4 @@
-import { geocode, SolarIrradiation, calcul, popUp } from "./function.js";
+import { geocode, SolarIrradiation, calcul, popUp } from "./functions.js";
 import { loads } from "./charge.js";
 
 // Select DOM Elements
