@@ -17,7 +17,19 @@ export const geocode = async (location) => {
     // Get Complete Address
     let addressName = response.data[0].display_name;
 
-    let angle = Math.abs(parseInt(lat)) + 10;
+    let inclinaison = Math.abs(parseInt(lat));
+    let angle;
+    if (inclinaison < 9) {
+      angle = 15;
+    } else if (10 < inclinaison < 20) {
+      angle = inclinaison + 5;
+    } else if (21 < inclinaison < 45) {
+      angle = inclinaison + 10;
+    } else if (46 < inclinaison < 65) {
+      angle = inclinaison + 15;
+    } else {
+      angle = 80;
+    }
     return [lat, lng, addressName, angle];
   } catch (error) {
     console.error(error);
@@ -55,29 +67,36 @@ export const calcul = async (dayInput, irradiation) => {
   let energie = 0;
   let values = [];
   let total = [];
+  let powers = [];
   let pvPower;
+  let totalPower;
   let sum;
   let battery;
   let voltage;
+  var number;
+  var power;
+  var time;
 
   document.querySelectorAll(".charge").forEach((charge) => {
     let elements = Array.from(charge.children);
     elements.forEach((element) => {
       values = [parseFloat(element.value), ...values];
       // Get Inputs Values
-      let number = values[0];
-      let power = values[1];
-      let time = values[2];
+      number = values[0];
+      power = values[1];
+      time = values[2];
 
       // Calculate Energie For Each Charge
       energie = number * power * time;
     });
 
+    powers = [power, ...powers];
     total = [...total, energie];
   });
 
   // Calculate Total Energie
   sum = total.reduce((a, b) => a + b);
+  totalPower = powers.reduce((a, b) => a + b);
 
   // Calculate PV Power
   pvPower = (sum * 1000) / ((await irradiation) * 0.65);
@@ -96,7 +115,7 @@ export const calcul = async (dayInput, irradiation) => {
   battery = (days * sum) / (0.8 * voltage);
   battery = battery.toFixed(2);
 
-  return [sum, pvPower, battery];
+  return [sum, totalPower, pvPower, battery];
 };
 
 export const popUp = (form) => {
