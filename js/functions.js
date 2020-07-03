@@ -19,7 +19,7 @@ export const geocode = async (location) => {
 
     let inclinaison = Math.abs(parseInt(lat));
     let angle;
-    if (inclinaison < 9) {
+    if (inclinaison <= 9) {
       angle = 15;
     } else if (10 < inclinaison <= 20) {
       angle = inclinaison + 5;

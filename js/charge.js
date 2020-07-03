@@ -40,13 +40,7 @@ del.addEventListener("click", (e) => {
   loads.lastChild.remove();
 });
 
-export const addModel = async (
-  exempleFrom,
-  volt,
-  pvPower,
-  battery,
-  totalPower
-) => {
+export const addModel = async (exempleFrom, volt, pvPower, battery) => {
   const voltage = await volt;
   exempleFrom.innerHTML = `<div class="input-group">
 <div class="input-group-prepend mb-2">
@@ -243,13 +237,13 @@ export const addModel = async (
     pvNumber = Math.ceil(pvPower / selectedPv);
     pvSerieNumber = voltage / 12;
     pvParalelNumber = Math.ceil(pvNumber / pvSerieNumber);
-    pvNumber = pvSerieNumber + pvParalelNumber;
+    pvNumber = pvSerieNumber * pvParalelNumber;
 
     batterySerieNumber = voltage / 12;
     batteryParalelNumber = Math.ceil(battery / selectedBattery);
     batteryNumber = batterySerieNumber + batteryParalelNumber;
 
-    let ondPower = Math.ceil(totalPower / (0.8 * 1000)) * 1000;
+    ondPower = Math.ceil(pvPower / (0.8 * 1000)) * 1000;
 
     let pvNumberOutput = `<ul class="list-group">
     <li class="list-group-item">

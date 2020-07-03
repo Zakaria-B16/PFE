@@ -149,7 +149,7 @@ const PVSizer = async (e) => {
       // Output Sizing
       document.getElementById("sizing").innerHTML = sizingOutput;
 
-      addModel(exempleFrom, voltage, pvPower, battery, totalPower);
+      addModel(exempleFrom, voltage, pvPower, battery);
     } catch (error) {
       console.error(error);
     }
