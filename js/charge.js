@@ -239,7 +239,7 @@ export const addModel = async (exempleFrom, volt, pvPower, battery) => {
     pvParalelNumber = Math.ceil(pvNumber / pvSerieNumber);
     pvNumber = pvSerieNumber * pvParalelNumber;
 
-    batterySerieNumber = voltage / 12;
+    batterySerieNumber = voltage / 12 - 1;
     batteryParalelNumber = Math.ceil(battery / selectedBattery);
     batteryNumber = batterySerieNumber + batteryParalelNumber;
 
