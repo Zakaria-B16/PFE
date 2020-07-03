@@ -67,7 +67,7 @@ const PVSizer = async (e) => {
       ] = await calcul(dayInput, firstIrradiation);
 
       // Render Complete Address
-      let addressOutput = ` <h3>
+      let addressOutput = `<h3>
       <i class="fa fa-map-marker-alt" aria-hidden="true"></i> ${addressName}
     </h3>`;
 

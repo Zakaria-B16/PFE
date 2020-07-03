@@ -287,7 +287,7 @@ export const addModel = async (exempleFrom, volt, pvPower, battery) => {
     </li>
     </ul>`;
 
-    let ondOutput = `<ul class="list-group">
+    let ondOutput = `<ul class="list-group mb-2">
     <li class="list-group-item">
       <strong
         ><i class="fas fa-wave-square"></i>

@@ -21,11 +21,11 @@ export const geocode = async (location) => {
     let angle;
     if (inclinaison <= 9) {
       angle = 15;
-    } else if (10 < inclinaison <= 20) {
+    } else if (inclinaison > 10 && inclinaison <= 20) {
       angle = inclinaison + 5;
-    } else if (21 < inclinaison <= 45) {
+    } else if (inclinaison > 21 && inclinaison <= 45) {
       angle = inclinaison + 10;
-    } else if (46 < inclinaison <= 65) {
+    } else if (inclinaison > 46 && inclinaison <= 65) {
       angle = inclinaison + 15;
     } else {
       angle = 80;
