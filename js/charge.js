@@ -249,6 +249,8 @@ export const addModel = async (
     batteryParalelNumber = Math.ceil(battery / selectedBattery);
     batteryNumber = batterySerieNumber + batteryParalelNumber;
 
+    let ondPower = Math.ceil(totalPower / (0.8 * 1000)) * 1000;
+
     let pvNumberOutput = `<ul class="list-group">
     <li class="list-group-item">
       <strong
@@ -265,7 +267,7 @@ export const addModel = async (
     <li class="list-group-item">
       <strong
         ><i class="fas fa-align-justify"></i>
-        <p>PV Module Paralel Number :</p></strong
+        <p>PV Module Parallel Number :</p></strong
       > ${pvParalelNumber}
     </li>
   </ul>`;
@@ -286,79 +288,64 @@ export const addModel = async (
     <li class="list-group-item">
       <strong
         ><i class="fas fa-battery-full"></i>
-        <p>Battery Paralel Number :</p></strong
+        <p>Battery Parallel Number :</p></strong
       > ${batteryParalelNumber}
     </li>
     </ul>`;
 
+    let ondOutput = `<ul class="list-group">
+    <li class="list-group-item">
+      <strong
+        ><i class="fas fa-wave-square"></i>
+        <p>Inverter :</p> </strong
+      > 12V/${ondPower}W
+    </li>
+    </ul>
+    <button id="cable-btn" class="btn btn-dark btn-block">START CABLE SIZING</button>
+    `;
+
     document.getElementById("pv-number").innerHTML = pvNumberOutput;
+
     document.getElementById("battery-number").innerHTML = batteryNumberOutput;
 
-    document.getElementById(
-      "regulator"
-    ).innerHTML = `<button id="regulator-btn" class="btn btn-dark btn-block">START REGULATOR SIZING</button>`;
+    document.getElementById("regulator").innerHTML = ondOutput;
 
     document
-      .getElementById("regulator-btn")
-      .addEventListener("click", () => regulatorSizing());
+      .getElementById("cable-btn")
+      .addEventListener("click", () => cableSizing());
 
-    const regulatorSizing = () => {
-      let ondPower = Math.ceil(totalPower / (0.8 * 1000));
-
-      let ondOutput = `<ul class="list-group">
-      <li class="list-group-item">
-        <strong
-          ><i class="fas fa-wave-square"></i>
-          <p>inverter :</p> </strong
-        > 12V/${ondPower}W
-      </li>
-      </ul>
-      <button id="cable-btn" class="btn btn-dark btn-block">START CABLE SIZING</button>
-      `;
-
-      document.getElementById("regulator").innerHTML += ondOutput;
-
-      document
-        .getElementById("cable-btn")
-        .addEventListener("click", () => cableSizing());
-
-      const cableSizing = () => {
-        let cableForm = `<div class="row justify-content-between">
+    const cableSizing = () => {
+      let cableForm = `<div class="row justify-content-between">
         <input
           id="l"
           type="text"
           class="col-5 form-control mb-2"
-          placeholder="Cable length"
+          placeholder="Cable length in m"
         />
         <button id="cable-btn" type="submit" class="btn btn-warning col-5 mb-2">
           CABLE SIZING
         </button>
       </div>`;
-        document.getElementById("cable-form").innerHTML = cableForm;
+      document.getElementById("cable-form").innerHTML = cableForm;
 
-        document
-          .getElementById("cable-form")
-          .addEventListener("submit", (e) => {
-            e.preventDefault();
-            let l = document.getElementById("l").value;
+      document.getElementById("cable-form").addEventListener("submit", (e) => {
+        e.preventDefault();
+        let l = document.getElementById("l").value;
 
-            let courant = (pvParalelNumber * selectedPv) / 12;
-            let cableSection = Math.ceil(
-              (0.017 * l * courant) / (0.05 * voltage)
-            );
+        let courant = (pvParalelNumber * selectedPv) / 12;
+        let cableSection = Math.ceil((0.017 * l * courant) / (0.05 * voltage));
 
-            let cableOUtput = `<ul class="list-group">
+        let cableOUtput = `<ul class="list-group">
           <li class="list-group-item">
             <strong
-              ><i class="fas fa-wave-square"></i>
+              ><i class="far fa-dot-circle"></i>
               <p>Cable Section :</p> </strong
-            > ${cableSection}
+            > ${cableSection}mm^2
           </li>
           </ul>`;
 
-            document.getElementById("cable").innerHTML = cableOUtput;
-          });
-      };
+        document.getElementById("cable").innerHTML = cableOUtput;
+      });
     };
   };
 };
