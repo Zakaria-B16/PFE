@@ -55,16 +55,10 @@ const PVSizer = async (e) => {
       const secondIrradiation = await SolarIrradiation(day3, day4, lat, lng);
 
       // Get Data From Caculation Function
-      const [
-        sum,
-        totalPower,
-        pvPower,
-        voltage,
-        battery,
-        pvNumber,
-        pvSerieNumber,
-        pvParalelNumber,
-      ] = await calcul(dayInput, firstIrradiation);
+      const [sum, totalPower, pvPower, voltage, battery] = await calcul(
+        dayInput,
+        firstIrradiation
+      );
 
       // Render Complete Address
       let addressOutput = `<h3>

@@ -183,6 +183,8 @@ export const addModel = async (exempleFrom, volt, pvPower, battery) => {
 </div>
 <button type="submit" class="btn btn-info btn-block">CONFIRM</button>`;
 
+  exempleFrom.scrollIntoView({ block: "end", behavior: "smooth" });
+
   const pvCheck = document.querySelectorAll(".pv-check");
   const batteryCheck = document.querySelectorAll(".battery-check");
 
@@ -192,7 +194,7 @@ export const addModel = async (exempleFrom, volt, pvPower, battery) => {
         element.checked = false;
       });
 
-      //Set Active on Selecteted Element
+      // Select Element
       e.target.checked = true;
     });
   });
@@ -203,7 +205,7 @@ export const addModel = async (exempleFrom, volt, pvPower, battery) => {
         element.checked = false;
       });
 
-      //Set Active on Selecteted Element
+      // Select Element
       e.target.checked = true;
     });
   });
@@ -295,7 +297,7 @@ export const addModel = async (exempleFrom, volt, pvPower, battery) => {
       > 12V/${ondPower}W
     </li>
     </ul>
-    <button id="cable-btn" class="btn btn-dark btn-block">START CABLE SIZING</button>
+    <button id="cable-btn" class="btn btn-dark btn-block mb-2">START CABLE SIZING</button>
     `;
 
     document.getElementById("pv-number").innerHTML = pvNumberOutput;
@@ -306,6 +308,10 @@ export const addModel = async (exempleFrom, volt, pvPower, battery) => {
 
     document
       .getElementById("cable-btn")
+      .scrollIntoView({ block: "end", behavior: "smooth" });
+
+    document
+      .getElementById("cable-btn")
       .addEventListener("click", () => cableSizing());
 
     const cableSizing = () => {
@@ -313,14 +319,17 @@ export const addModel = async (exempleFrom, volt, pvPower, battery) => {
         <input
           id="l"
           type="text"
-          class="col-5 form-control mb-2"
+          class="col-md-5 form-control mb-2"
           placeholder="Cable length in m"
         />
-        <button id="cable-btn" type="submit" class="btn btn-warning col-5 mb-2">
+        <button id="cable-btn" type="submit" class="btn btn-warning col-md-5 mb-2">
           CABLE SIZING
         </button>
       </div>`;
       document.getElementById("cable-form").innerHTML = cableForm;
+      document
+        .getElementById("cable-form")
+        .scrollIntoView({ block: "end", behavior: "smooth" });
 
       document.getElementById("cable-form").addEventListener("submit", (e) => {
         e.preventDefault();
@@ -339,6 +348,9 @@ export const addModel = async (exempleFrom, volt, pvPower, battery) => {
           </ul>`;
 
         document.getElementById("cable").innerHTML = cableOUtput;
+        document
+          .getElementById("cable")
+          .scrollIntoView({ block: "end", behavior: "smooth" });
       });
     };
   };
