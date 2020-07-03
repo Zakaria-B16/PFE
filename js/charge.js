@@ -45,7 +45,7 @@ export const addModel = async (exempleFrom, volt, pvPower, battery) => {
   exempleFrom.innerHTML = `<div class="input-group">
 <div class="input-group-prepend mb-2">
   <div class="input-group-text">
-    <p>Choose your PV module :</p>
+    <p class="col-12 mb-1">Choose your PV module :</p>
     <div>
       <input
         id="first-pv"
@@ -112,7 +112,7 @@ export const addModel = async (exempleFrom, volt, pvPower, battery) => {
 <div class="input-group">
 <div class="input-group-prepend mb-2">
   <div class="input-group-text">
-    <p>Choose your battery model :</p>
+    <p class="col-12 mb-1">Choose your battery model :</p>
     <div>
       <input
         id="first-pv"
@@ -221,6 +221,8 @@ export const addModel = async (exempleFrom, volt, pvPower, battery) => {
   var batterySerieNumber;
   var batteryParalelNumber;
   var ondPower;
+  var condition1 = true;
+  var condition2 = true;
 
   const calculateNumber = (e) => {
     e.preventDefault();
@@ -228,13 +230,47 @@ export const addModel = async (exempleFrom, volt, pvPower, battery) => {
     batteryCheck.forEach((element) => {
       if (element.checked) {
         selectedBattery = parseInt(element.value);
+        condition1 = false;
       }
     });
     pvCheck.forEach((element) => {
       if (element.checked) {
         selectedPv = parseInt(element.value);
+        condition2 = false;
       }
     });
+
+    if (condition1 && condition2) {
+      if (exempleFrom.childNodes.length === 1) {
+        // Create A Popup
+        let popup = document.createElement("div");
+        popup.classList = "popup";
+        // Render Popup
+        popup.innerHTML = `<div class="alert alert-danger alert-dismissible fade show" role="alert">
+      Please choose a PV model and a battery
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>`;
+
+        exempleFrom.appendChild(popup);
+        exempleFrom.scrollIntoView({ block: "end", behavior: "smooth" });
+
+        // Wait Before Delete Popup
+        setTimeout(() => {
+          popup.style.opacity = 1;
+        }, 250);
+        setTimeout(() => {
+          popup.style.opacity = 0;
+          setTimeout(() => {
+            popup.style.display = "none";
+            exempleFrom.lastChild.remove();
+          }, 1000);
+        }, 5000);
+      }
+
+      return;
+    }
 
     pvNumber = Math.ceil(pvPower / selectedPv);
     pvSerieNumber = voltage / 12;
@@ -297,8 +333,7 @@ export const addModel = async (exempleFrom, volt, pvPower, battery) => {
       > 12V/${ondPower}W
     </li>
     </ul>
-    <button id="cable-btn" class="btn btn-dark btn-block mb-2">START CABLE SIZING</button>
-    `;
+    <button id="cable-btn" class="btn btn-dark btn-block mb-2">START CABLE SIZING</button>`;
 
     document.getElementById("pv-number").innerHTML = pvNumberOutput;
 
@@ -307,7 +342,7 @@ export const addModel = async (exempleFrom, volt, pvPower, battery) => {
     document.getElementById("regulator").innerHTML = ondOutput;
 
     document
-      .getElementById("cable-btn")
+      .getElementById("regulator")
       .scrollIntoView({ block: "end", behavior: "smooth" });
 
     document
@@ -321,6 +356,7 @@ export const addModel = async (exempleFrom, volt, pvPower, battery) => {
           type="text"
           class="col-md-5 form-control mb-2"
           placeholder="Cable length in m"
+          required
         />
         <button id="cable-btn" type="submit" class="btn btn-warning col-md-5 mb-2">
           CABLE SIZING

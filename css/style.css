@@ -7,7 +7,7 @@
 }
 
 .sizing {
-  margin: 25px 0;
+  margin: 25px 0 60px 0;
 }
 
 .sizing h1 {
@@ -66,6 +66,8 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 #exemple .input-group-text p {
