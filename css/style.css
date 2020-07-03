@@ -51,7 +51,12 @@
   margin-left: 20px;
 }
 
+#exemple .input-group-prepend {
+  width: 100%;
+}
+
 #exemple .input-group-text {
+  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -63,7 +68,16 @@
           justify-content: center;
 }
 
+#exemple .input-group-text p {
+  font-weight: bold;
+  margin: 0;
+  margin-right: 10px;
+}
+
+#exemple .input-group-text input {
+  margin-left: 20px;
+}
+
 #exemple .input-group-text label {
   margin-bottom: 0;
-  margin-left: 5px;
 }

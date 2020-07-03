@@ -21,11 +21,11 @@ export const geocode = async (location) => {
     let angle;
     if (inclinaison < 9) {
       angle = 15;
-    } else if (10 < inclinaison < 20) {
+    } else if (10 < inclinaison <= 20) {
       angle = inclinaison + 5;
-    } else if (21 < inclinaison < 45) {
+    } else if (21 < inclinaison <= 45) {
       angle = inclinaison + 10;
-    } else if (46 < inclinaison < 65) {
+    } else if (46 < inclinaison <= 65) {
       angle = inclinaison + 15;
     } else {
       angle = 80;
@@ -82,15 +82,15 @@ export const calcul = async (dayInput, irradiation) => {
     elements.forEach((element) => {
       values = [parseFloat(element.value), ...values];
       // Get Inputs Values
-      number = values[0];
+      time = values[0];
       power = values[1];
-      time = values[2];
+      number = values[2];
 
       // Calculate Energie For Each Charge
       energie = number * power * time;
     });
 
-    powers = [power, ...powers];
+    powers = [power * number, ...powers];
     total = [...total, energie];
   });
 
@@ -115,7 +115,7 @@ export const calcul = async (dayInput, irradiation) => {
   battery = (days * sum) / (0.8 * voltage);
   battery = battery.toFixed(2);
 
-  return [sum, totalPower, pvPower, battery];
+  return [sum, totalPower, pvPower, voltage, battery];
 };
 
 export const popUp = (form) => {

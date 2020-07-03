@@ -1,10 +1,11 @@
 import { geocode, SolarIrradiation, calcul, popUp } from "./functions.js";
-import { loads } from "./charge.js";
+import { loads, addModel } from "./charge.js";
 
 // Select DOM Elements
 const form = document.getElementById("pv-form");
 const locationInput = document.getElementById("location-input");
 const dayInput = document.getElementById("number-day-input");
+const exempleFrom = document.getElementById("exemple");
 
 // Declare Variables
 let day1;
@@ -54,36 +55,84 @@ const PVSizer = async (e) => {
       const secondIrradiation = await SolarIrradiation(day3, day4, lat, lng);
 
       // Get Data From Caculation Function
-      const [sum, totalPower, pvPower, battery] = await calcul(
-        dayInput,
-        firstIrradiation
-      );
+      const [
+        sum,
+        totalPower,
+        pvPower,
+        voltage,
+        battery,
+        pvNumber,
+        pvSerieNumber,
+        pvParalelNumber,
+      ] = await calcul(dayInput, firstIrradiation);
 
       // Render Complete Address
-      let addressOutput = `<h3><i class="fa fa-map-marker-alt" aria-hidden="true"></i> ${addressName}</h3>`;
+      let addressOutput = ` <h3>
+      <i class="fa fa-map-marker-alt" aria-hidden="true"></i> ${addressName}
+    </h3>`;
 
       // Render Geometry
       let geomertyOutput = `<ul class="list-group">
-                                  <li class="list-group-item"><strong><i class="fab fa-audible"></i> <p>Angle Of Inclination :</p> </strong>${angle}°</li>
-                                  <li class="list-group-item"><strong><i class="fa fa-compass" aria-hidden="true"></i> <p>Orientation :</p> </strong>${orientation}</li>
-                            </ul>`;
+      <li class="list-group-item">
+        <strong
+          ><i class="fab fa-audible"></i>
+          <p>Angle Of Inclination :</p> </strong
+        >${angle}°
+      </li>
+      <li class="list-group-item">
+        <strong
+          ><i class="fa fa-compass" aria-hidden="true"></i>
+          <p>Orientation :</p> </strong
+        >${orientation}
+      </li>
+    </ul>`;
 
       // Render Solar Irradiation
       let SolarOutput = `<ul class="list-group">
-                              <li class="list-group-item"><strong><i class="fa fa-sun" aria-hidden="true"></i> <p>Solar Irradiance On The ${day1} :</p> </strong>${firstIrradiation} Wh/m^2 </li>
-                              <li class="list-group-item"><strong><i class="far fa-sun" aria-hidden="true"></i> <p>Solar Irradiance On The ${day3} :</p> </strong>${secondIrradiation} Wh/m^2 </li>
-                          </ul>`;
+      <li class="list-group-item">
+        <strong
+          ><i class="fa fa-sun" aria-hidden="true"></i>
+          <p>Solar Irradiance On The ${day1} :</p> </strong
+        >${firstIrradiation} Wh/m^2
+      </li>
+      <li class="list-group-item">
+        <strong
+          ><i class="far fa-sun" aria-hidden="true"></i>
+          <p>Solar Irradiance On The ${day3} :</p> </strong
+        >${secondIrradiation} Wh/m^2
+      </li>
+    </ul>`;
 
       // Render Daily Consomation PV Power & Battery Capacity
       let chargeOutput = `<ul class="list-group">
-                                  <li class="list-group-item"><strong><i class="fa fa-bolt" aria-hidden="true"></i> <p>Daily Energy Consomation :</p> </strong>${sum} Wh/j </li>
-                                  <li class="list-group-item"><strong><i class="fas fa-plug" aria-hidden="true"></i> <p>Daily Power Consomation :</p> </strong>${totalPower} Wh/j </li>
-                          </ul>`;
+      <li class="list-group-item">
+        <strong
+          ><i class="fa fa-bolt" aria-hidden="true"></i>
+          <p>Daily Energy Consomation :</p> </strong
+        >${sum} Wh/j
+      </li>
+      <li class="list-group-item">
+        <strong
+          ><i class="fas fa-plug" aria-hidden="true"></i>
+          <p>Daily Power Consomation :</p> </strong
+        >${totalPower} Wh/j
+      </li>
+    </ul>`;
 
       let sizingOutput = `<ul class="list-group">
-                               <li class="list-group-item"><strong><i class="fas fa-border-all"></i> <p>PV Power :</p> </strong>${pvPower} Wc </li>
-                               <li class="list-group-item"><strong><i class="fas fa-car-battery" aria-hidden="true"></i> <p>Battery Capacity :</p></strong>${battery} Ah </li>
-                          </ul>`;
+      <li class="list-group-item">
+        <strong
+          ><i class="fas fa-border-all"></i>
+          <p>PV Power :</p> </strong
+        >${pvPower} Wc
+      </li>
+      <li class="list-group-item">
+        <strong
+          ><i class="fas fa-car-battery" aria-hidden="true"></i>
+          <p>Battery Capacity :</p></strong
+        >${battery} Ah
+      </li>
+    </ul>`;
 
       // Output Complete Address
       document.getElementById("address").innerHTML = addressOutput;
@@ -100,9 +149,7 @@ const PVSizer = async (e) => {
       // Output Sizing
       document.getElementById("sizing").innerHTML = sizingOutput;
 
-      // document.getElementById(
-      //   "regulator"
-      // ).innerHTML = `<button id="regulator" class="btn btn-dark btn-block mt-1">START REGULATOR SIZING</button>`;
+      addModel(exempleFrom, voltage, pvPower, battery, totalPower);
     } catch (error) {
       console.error(error);
     }
