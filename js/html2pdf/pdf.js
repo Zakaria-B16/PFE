@@ -33,7 +33,6 @@ export const generatePDF = (ondPower, cableSection) => {
 
   const element =
     address +
-    map +
     geocode +
     solar +
     chargePower +
