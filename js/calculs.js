@@ -56,7 +56,12 @@ export const startCalcul = async (dayInput, irradiation) => {
 };
 
 // Installation Sizing Function
-export const installtionSzing = async (exempleFrom, volt, pvPower, battery) => {
+export const installtionSizing = async (
+  exempleFrom,
+  volt,
+  pvPower,
+  battery
+) => {
   // Get Voltage
   const voltage = await volt;
   // Exemple Form

@@ -1,5 +1,5 @@
 import { geocode, SolarIrradiation } from "./API.js";
-import { startCalcul, installtionSzing } from "./calculs.js";
+import { startCalcul, installtionSizing } from "./calculs.js";
 import { loads, ErrorPopup } from "./component.js";
 import { mapboxFunction } from "./mapbox.js";
 
@@ -146,13 +146,15 @@ const PVSizer = async (e) => {
       // Output Sizing
       document.getElementById("sizing").innerHTML = sizingOutput;
 
+      // Scroll To Adress After 3s
       setInterval(() => {
         document
           .getElementById("address")
           .scrollIntoView({ block: "start", behavior: "smooth" });
       }, 3000);
 
-      installtionSzing(exempleFrom, voltage, pvPower, battery);
+      // Start Installation Sizing Function
+      installtionSizing(exempleFrom, voltage, pvPower, battery);
     } catch (error) {
       console.error(error);
     }
