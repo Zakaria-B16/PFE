@@ -1,6 +1,7 @@
 import { geocode, SolarIrradiation } from "./API.js";
 import { startCalcul, installtionSzing } from "./calculs.js";
 import { loads, ErrorPopup } from "./component.js";
+import { mapboxFunction } from "./mapbox.js";
 
 // Select DOM Elements
 const form = document.getElementById("pv-form");
@@ -61,6 +62,7 @@ const PVSizer = async (e) => {
         firstIrradiation
       );
 
+      mapboxFunction(lat, lng);
       // Render Complete Address
       let addressOutput = `<h3>
       <i class="fa fa-map-marker-alt" aria-hidden="true"></i> ${addressName}
@@ -143,6 +145,12 @@ const PVSizer = async (e) => {
 
       // Output Sizing
       document.getElementById("sizing").innerHTML = sizingOutput;
+
+      setInterval(() => {
+        document
+          .getElementById("address")
+          .scrollIntoView({ block: "start", behavior: "smooth" });
+      }, 3000);
 
       installtionSzing(exempleFrom, voltage, pvPower, battery);
     } catch (error) {
