@@ -1,5 +1,6 @@
-import { geocode, SolarIrradiation, calcul, popUp } from "./functions.js";
-import { loads, addModel } from "./charge.js";
+import { geocode, SolarIrradiation } from "./API.js";
+import { startCalcul, installtionSzing } from "./calculs.js";
+import { loads, ErrorPopup } from "./component.js";
 
 // Select DOM Elements
 const form = document.getElementById("pv-form");
@@ -24,7 +25,7 @@ const PVSizer = async (e) => {
 
   // Check For Charges
   if (loads.childNodes.length === 0) {
-    popUp(form);
+    ErrorPopup(form);
   } else {
     // Get Location From Form
     location = locationInput.value;
@@ -55,7 +56,7 @@ const PVSizer = async (e) => {
       const secondIrradiation = await SolarIrradiation(day3, day4, lat, lng);
 
       // Get Data From Caculation Function
-      const [sum, totalPower, pvPower, voltage, battery] = await calcul(
+      const [sum, totalPower, pvPower, voltage, battery] = await startCalcul(
         dayInput,
         firstIrradiation
       );
@@ -109,7 +110,7 @@ const PVSizer = async (e) => {
         <strong
           ><i class="fas fa-plug" aria-hidden="true"></i>
           <p>Daily Power Consomation :</p> </strong
-        >${totalPower} Wh/j
+        >${totalPower} W
       </li>
     </ul>`;
 
@@ -143,7 +144,7 @@ const PVSizer = async (e) => {
       // Output Sizing
       document.getElementById("sizing").innerHTML = sizingOutput;
 
-      addModel(exempleFrom, voltage, pvPower, battery);
+      installtionSzing(exempleFrom, voltage, pvPower, battery);
     } catch (error) {
       console.error(error);
     }
