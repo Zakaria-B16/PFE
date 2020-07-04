@@ -146,13 +146,6 @@ const PVSizer = async (e) => {
       // Output Sizing
       document.getElementById("sizing").innerHTML = sizingOutput;
 
-      // Scroll To Adress After 3s
-      setInterval(() => {
-        document
-          .getElementById("address")
-          .scrollIntoView({ block: "start", behavior: "smooth" });
-      }, 3000);
-
       // Start Installation Sizing Function
       installtionSizing(exempleFrom, voltage, pvPower, battery);
     } catch (error) {
