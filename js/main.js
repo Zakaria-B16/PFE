@@ -2,6 +2,7 @@ import { geocode, SolarIrradiation } from "./API.js";
 import { startCalcul, installtionSizing } from "./calculs.js";
 import { loads, ErrorPopup } from "./component.js";
 import { mapboxFunction } from "./mapbox.js";
+import { generatePDF } from "./html2pdf/pdf.js";
 
 // Select DOM Elements
 const form = document.getElementById("pv-form");
@@ -64,7 +65,7 @@ const PVSizer = async (e) => {
 
       mapboxFunction(lat, lng);
       // Render Complete Address
-      let addressOutput = `<h3>
+      let addressOutput = `<h3 class="text-center">
       <i class="fa fa-map-marker-alt" aria-hidden="true"></i> ${addressName}
     </h3>`;
 

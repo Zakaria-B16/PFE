@@ -1,3 +1,5 @@
+import { generatePDF } from "./html2pdf/pdf.js";
+
 // Calculation Function
 export const startCalcul = async (dayInput, irradiation) => {
   let days = parseInt(dayInput.value);
@@ -408,12 +410,17 @@ const PVBatterySizing = (
       .scrollIntoView({ block: "end", behavior: "smooth" });
 
     // Start Cable Sizing Function
-    cableSizingFunction(pvParalelNumber, selectedPv, voltage);
+    cableSizingFunction(pvParalelNumber, selectedPv, voltage, ondPower);
   };
 };
 
 // Cable Sizing Function
-const cableSizingFunction = (pvParalelNumber, selectedPv, voltage) => {
+const cableSizingFunction = (
+  pvParalelNumber,
+  selectedPv,
+  voltage,
+  ondPower
+) => {
   document
     .getElementById("cable-btn")
     .addEventListener("click", () => cableSizing());
@@ -428,7 +435,7 @@ const cableSizingFunction = (pvParalelNumber, selectedPv, voltage) => {
             placeholder="Cable length in m"
             required
           />
-          <button id="cable-btn" type="submit" class="btn btn-warning col-md-5 mb-2">
+          <button type="submit" class="btn btn-warning col-md-5 mb-2">
             CABLE SIZING
           </button>
         </div>`;
@@ -454,14 +461,17 @@ const cableSizingFunction = (pvParalelNumber, selectedPv, voltage) => {
       let cableSection = Math.ceil((0.017 * l * courant) / (0.05 * voltage));
 
       // Render Cable Section
-      let cableOUtput = `<ul class="list-group">
+      let cableOUtput = `<ul class="list-group mb-2">
             <li class="list-group-item">
               <strong
                 ><i class="far fa-dot-circle"></i>
                 <p>Cable Section :</p> </strong
               > ${cableSection}mm^2
             </li>
-            </ul>`;
+            </ul>
+            <button id="PDF-btn" class="btn btn-secondary btn-block">
+            GENERATE RESULTS AS A PDF FILE
+            </button>`;
 
       // Output Cable Section
       document.getElementById("cable").innerHTML = cableOUtput;
@@ -470,6 +480,10 @@ const cableSizingFunction = (pvParalelNumber, selectedPv, voltage) => {
       document
         .getElementById("cable")
         .scrollIntoView({ block: "end", behavior: "smooth" });
+
+      document
+        .getElementById("PDF-btn")
+        .addEventListener("click", () => generatePDF(ondPower, cableSection));
     });
   };
 };
