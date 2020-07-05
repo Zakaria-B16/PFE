@@ -1,4 +1,5 @@
-import { generatePDF } from "./html2pdf/pdf.js";
+import { generatePDF } from "./lib/pdf.js";
+//import { makePVSchema, makeBatterySchema } from "./schema.js";
 
 // Calculation Function
 export const startCalcul = async (dayInput, irradiation) => {
@@ -410,12 +411,23 @@ const PVBatterySizing = (
       .scrollIntoView({ block: "end", behavior: "smooth" });
 
     // Start Cable Sizing Function
-    cableSizingFunction(pvParalelNumber, selectedPv, voltage, ondPower);
+    cableSizingFunction(
+      batterySerieNumber,
+      batteryParalelNumber,
+      pvSerieNumber,
+      pvParalelNumber,
+      selectedPv,
+      voltage,
+      ondPower
+    );
   };
 };
 
 // Cable Sizing Function
 const cableSizingFunction = (
+  batterySerieNumber,
+  batteryParalelNumber,
+  pvSerieNumber,
   pvParalelNumber,
   selectedPv,
   voltage,
@@ -471,7 +483,8 @@ const cableSizingFunction = (
             </ul>
             <button id="PDF-btn" class="btn btn-secondary btn-block">
             GENERATE RESULTS AS A PDF FILE
-            </button>`;
+            </button>
+            `;
 
       // Output Cable Section
       document.getElementById("cable").innerHTML = cableOUtput;
@@ -481,6 +494,13 @@ const cableSizingFunction = (
         .getElementById("cable")
         .scrollIntoView({ block: "end", behavior: "smooth" });
 
+      // document
+      //   .getElementById("schema-btn")
+      //   .addEventListener(
+      //     "click",
+      //     () => makePVSchema(pvSerieNumber, pvParalelNumber),
+      //     makeBatterySchema(batterySerieNumber, batteryParalelNumber)
+      //   );
       document
         .getElementById("PDF-btn")
         .addEventListener("click", () => generatePDF(ondPower, cableSection));

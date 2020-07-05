@@ -31,7 +31,9 @@ export const generatePDF = (ondPower, cableSection) => {
   </li>
   </ul>`;
 
-  const element =
+  const element = `<div id="pdf">
+  <div class="container">
+  ${
     address +
     geocode +
     solar +
@@ -40,8 +42,11 @@ export const generatePDF = (ondPower, cableSection) => {
     pvNumber +
     batteryNumber +
     regulatorOutput +
-    cableOutput;
+    cableOutput
+  }
+  </div>
+</div>`;
 
   // Choose the element and save the PDF for our user.
-  html2pdf().from(element).save("SizingResult");
+  html2pdf().from(element).save("Sizing-Result");
 };

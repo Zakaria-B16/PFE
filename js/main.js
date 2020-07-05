@@ -2,7 +2,6 @@ import { geocode, SolarIrradiation } from "./API.js";
 import { startCalcul, installtionSizing } from "./calculs.js";
 import { loads, ErrorPopup } from "./component.js";
 import { mapboxFunction } from "./mapbox.js";
-import { generatePDF } from "./html2pdf/pdf.js";
 
 // Select DOM Elements
 const form = document.getElementById("pv-form");
@@ -24,6 +23,39 @@ form.addEventListener("submit", (e) => PVSizer(e));
 // Geocode Function
 const PVSizer = async (e) => {
   e.preventDefault();
+
+  // Clear Complete Address
+  document.getElementById("address").innerHTML = ``;
+
+  // Clear GeoMetry
+  document.getElementById("geocode").innerHTML = ``;
+
+  // Clear Irradiation
+  document.getElementById("solar-irradiation").innerHTML = ``;
+
+  // Clear Charge
+  document.getElementById("charge-power").innerHTML = ``;
+
+  // Clear Sizing
+  document.getElementById("sizing").innerHTML = ``;
+
+  // Clear Example
+  document.getElementById("exemple").innerHTML = ``;
+
+  // Clear PV-Number
+  document.getElementById("pv-number").innerHTML = ``;
+
+  // Clear Battery-Number
+  document.getElementById("battery-number").innerHTML = ``;
+
+  // Clear Regulator
+  document.getElementById("regulator").innerHTML = ``;
+
+  // Clear Cable-Form
+  document.getElementById("cable-form").innerHTML = ``;
+
+  // Clear Cable
+  document.getElementById("cable").innerHTML = ``;
 
   // Check For Charges
   if (loads.childNodes.length === 0) {
