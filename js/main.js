@@ -139,13 +139,13 @@ const PVSizer = async (e) => {
         <strong
           ><i class="fa fa-bolt" aria-hidden="true"></i>
           <p>Daily Energy Consomation :</p> </strong
-        >${sum} Wh/j
+        >${sum} Wh/Day
       </li>
       <li class="list-group-item">
         <strong
           ><i class="fas fa-plug" aria-hidden="true"></i>
           <p>Daily Power Consomation :</p> </strong
-        >${totalPower} W
+        >${totalPower} W/Day
       </li>
     </ul>`;
 
@@ -178,6 +178,13 @@ const PVSizer = async (e) => {
 
       // Output Sizing
       document.getElementById("sizing").innerHTML = sizingOutput;
+
+      // Scroll To Address After 3s
+      setTimeout(() => {
+        document
+          .getElementById("address")
+          .scrollIntoView({ block: "start", behavior: "smooth" });
+      }, 3000);
 
       // Start Installation Sizing Function
       installtionSizing(exempleFrom, voltage, pvPower, battery);
