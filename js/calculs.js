@@ -443,6 +443,8 @@ const cableSizingFunction = (
           <input
             id="l"
             type="number"
+            step="any"
+            min="0"
             class="col-md-5 form-control mb-2"
             placeholder="Cable length in m"
             required

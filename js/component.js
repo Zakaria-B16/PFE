@@ -11,6 +11,8 @@ add.addEventListener("click", (e) => {
   id="number"
   class="number col-md-3 mb-1 mt-1 form-control"
   type="number"
+  step="any"
+  min="0"
   placeholder="Number (ex : 2)"
   required
 />
@@ -19,12 +21,16 @@ add.addEventListener("click", (e) => {
   id="power"
   class="power col-md-4 mb-1 mt-1 form-control"
   type="number"
+  step="any"
+  min="0"
   placeholder="Load Power in Watt (ex : 120)"
   required
 />
 
 <input
   id="time"
+  step="any"
+  min="0"
   class="time col-md-4 mb-1 mt-1 form-control"
   type="number"
   placeholder="Use Time In Hours (ex : 3)"
