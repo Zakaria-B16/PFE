@@ -37,6 +37,7 @@ export const startCalcul = async (dayInput, irradiation) => {
   // Calculate Total Energie
   sum = total.reduce((a, b) => a + b);
   totalPower = powers.reduce((a, b) => a + b);
+  totalPower = totalPower.toFixed(2);
 
   // Calculate PV Power
   pvPower = (sum * 1000) / ((await irradiation) * 0.65);
@@ -74,63 +75,63 @@ export const installtionSizing = async (
       <p class="col-12 mb-1">Choose your PV module :</p>
       <div>
         <input
-          id="first-pv"
+          id="pv-1"
           class="pv-check"
           type="radio"
           aria-label="Radio button for following text input"
           value="50"
         />
-        <label for="first-pv">50W/12V</label>
+        <label for="pv-1">50W/12V</label>
       </div>
       <div>
         <input
-          id="first-pv"
+          id="pv-2"
           class="pv-check"
           type="radio"
           aria-label="Radio button for following text input"
           value="100"
         />
-        <label for="first-pv">100W/12V</label>
+        <label for="pv-2">100W/12V</label>
       </div>
       <div>
         <input
-          id="first-pv"
+          id="pv-3"
           class="pv-check"
           type="radio"
           aria-label="Radio button for following text input"
           value="150"
         />
-        <label for="first-pv">150W/12V</label>
+        <label for="pv-3">150W/12V</label>
       </div>
       <div>
         <input
-          id="first-pv"
+          id="pv-4"
           class="pv-check"
           type="radio"
           aria-label="Radio button for following text input"
           value="200"
         />
-        <label for="first-pv">200W/12V</label>
+        <label for="pv-4">200W/12V</label>
       </div>
       <div>
         <input
-          id="first-pv"
+          id="pv-5"
           class="pv-check"
           type="radio"
           aria-label="Radio button for following text input"
           value="280"
         />
-        <label for="first-pv">280W/12V</label>
+        <label for="pv-5">280W/12V</label>
       </div>
       <div>
         <input
-          id="first-pv"
+          id="pv-6"
           class="pv-check"
           type="radio"
           aria-label="Radio button for following text input"
           value="335"
         />
-        <label for="first-pv">335W/12V</label>
+        <label for="pv-6">335W/12V</label>
       </span>
     </div>
   </div>
@@ -141,68 +142,68 @@ export const installtionSizing = async (
       <p class="col-12 mb-1">Choose your battery model :</p>
       <div>
         <input
-          id="first-pv"
-          class="battery-check"
-          type="radio"
-          aria-label="Radio button for following text input"
-          value="12"
-        />
-        <label for="first-pv">12V/12Ah</label>
-      </div>
-      <div>
-        <input
-          id="first-pv"
-          name="battery"
+          id="battery-1"
           class="battery-check"
           type="radio"
           aria-label="Radio button for following text input"
           value="35"
         />
-        <label for="first-pv">12V/35Ah</label>
+        <label for="battery-1">12V/35Ah</label>
       </div>
       <div>
         <input
-          id="first-pv"
+          id="battery-2"
           name="battery"
           class="battery-check"
           type="radio"
           aria-label="Radio button for following text input"
           value="55"
         />
-        <label for="first-pv">12V/55Ah</label>
+        <label for="battery-2">12V/55Ah</label>
       </div>
       <div>
         <input
-          id="first-pv"
+          id="battery-3"
           name="battery"
           class="battery-check"
           type="radio"
           aria-label="Radio button for following text input"
           value="100"
         />
-        <label for="first-pv">12V/100Ah</label>
+        <label for="battery-3">12V/100Ah</label>
       </div>
       <div>
         <input
-          id="first-pv"
+          id="battery-4"
           name="battery"
           class="battery-check"
           type="radio"
           aria-label="Radio button for following text input"
           value="150"
         />
-        <label for="first-pv">12V/150Ah</label>
+        <label for="battery-4">12V/150Ah</label>
       </div>
       <div>
         <input
-          id="first-pv"
+          id="battery-5"
           name="battery"
           class="battery-check"
           type="radio"
           aria-label="Radio button for following text input"
           value="250"
         />
-        <label for="first-pv">12V/250Ah</label>
+        <label for="battery-5">12V/250Ah</label>
+      </div>
+      <div>
+        <input
+          id="battery-6"
+          name="battery"
+          class="battery-check"
+          type="radio"
+          aria-label="Radio button for following text input"
+          value="400"
+        />
+        <label for="battery-6">12V/400Ah</label>
       </span>
     </div>
   </div>
@@ -319,12 +320,16 @@ const PVBatterySizing = (
           popup.style.opacity = 0;
           setTimeout(() => {
             popup.style.display = "none";
-            exempleFrom.lastChild.remove();
+            popup.remove();
           }, 1000);
         }, 5000);
       }
 
       return;
+    }
+
+    if (document.querySelectorAll(".popup").length === 1) {
+      document.querySelector(".popup").remove();
     }
 
     // Calculate PV Module

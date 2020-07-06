@@ -2,10 +2,19 @@ export const loads = document.querySelector(".loads");
 const add = document.querySelector(".add");
 const del = document.querySelector(".delete");
 
+// Add Charge
 add.addEventListener("click", (e) => {
   e.preventDefault();
+  // Remove Error Popup
+  if (document.querySelectorAll(".popup").length === 1) {
+    document.querySelector(".popup").remove();
+  }
+
+  // Create Container
   let container = document.createElement("div");
   container.classList = "container";
+
+  // Create Charge
   let newCharge = `<div class="charge row justify-content-between">
   <input
   id="number"
@@ -37,15 +46,21 @@ add.addEventListener("click", (e) => {
   required
 />
   </div>`;
+
+  // Add Charge To Container
   container.innerHTML += newCharge;
+
+  // Render Container
   loads.appendChild(container);
 });
 
+// Delete Charge
 del.addEventListener("click", (e) => {
   e.preventDefault();
   loads.lastChild.remove();
 });
 
+// Error Popup FUnction
 export const ErrorPopup = (form) => {
   if (form.childNodes.length === 9) {
     // Create A Popup
@@ -69,7 +84,7 @@ export const ErrorPopup = (form) => {
       popup.style.opacity = 0;
       setTimeout(() => {
         popup.style.display = "none";
-        form.lastChild.remove();
+        popup.remove();
       }, 1000);
     }, 5000);
   }
