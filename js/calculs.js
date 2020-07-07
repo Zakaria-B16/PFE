@@ -80,6 +80,7 @@ export const installtionSizing = async (
           type="radio"
           aria-label="Radio button for following text input"
           value="50"
+          checked
         />
         <label for="pv-1">50W/12V</label>
       </div>
@@ -147,6 +148,7 @@ export const installtionSizing = async (
           type="radio"
           aria-label="Radio button for following text input"
           value="35"
+          checked
         />
         <label for="battery-1">12V/35Ah</label>
       </div>
@@ -273,8 +275,6 @@ const PVBatterySizing = (
   let batterySerieNumber;
   let batteryParalelNumber;
   let ondPower;
-  let condition1 = true;
-  let condition2 = true;
 
   const calculateNumber = (e) => {
     e.preventDefault();
@@ -283,7 +283,6 @@ const PVBatterySizing = (
     pvCheck.forEach((element) => {
       if (element.checked) {
         selectedPv = parseInt(element.value);
-        condition2 = false;
       }
     });
 
@@ -291,46 +290,8 @@ const PVBatterySizing = (
     batteryCheck.forEach((element) => {
       if (element.checked) {
         selectedBattery = parseInt(element.value);
-        condition1 = false;
       }
     });
-
-    // Error Popup If There Any Checked
-    if (condition1 || condition2) {
-      if (exempleFrom.childNodes.length === 1) {
-        // Create A Popup
-        let popup = document.createElement("div");
-        popup.classList = "popup";
-        // Render Popup
-        popup.innerHTML = `<div class="alert alert-danger alert-dismissible fade show" role="alert">
-      Please choose a PV model and a battery
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>`;
-
-        exempleFrom.appendChild(popup);
-        exempleFrom.scrollIntoView({ block: "end", behavior: "smooth" });
-
-        // Wait Before Delete Popup
-        setTimeout(() => {
-          popup.style.opacity = 1;
-        }, 250);
-        setTimeout(() => {
-          popup.style.opacity = 0;
-          setTimeout(() => {
-            popup.style.display = "none";
-            popup.remove();
-          }, 1000);
-        }, 5000);
-      }
-
-      return;
-    }
-
-    if (document.querySelectorAll(".popup").length === 1) {
-      document.querySelector(".popup").remove();
-    }
 
     // Calculate PV Module
     pvNumber = Math.ceil(pvPower / selectedPv);
