@@ -28,7 +28,16 @@ const PVSizer = async (e) => {
   document.getElementById("address").innerHTML = ``;
 
   // Clear GeoMetry
-  document.getElementById("geocode").innerHTML = ``;
+  document.getElementById("geocode").innerHTML = `<div class="loading">
+  <div class="obj"></div>
+  <div class="obj"></div>
+  <div class="obj"></div>
+  <div class="obj"></div>
+  <div class="obj"></div>
+  <div class="obj"></div>
+  <div class="obj"></div>
+  <div class="obj"></div>
+</div>`;
 
   // Clear Irradiation
   document.getElementById("solar-irradiation").innerHTML = ``;
