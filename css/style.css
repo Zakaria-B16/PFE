@@ -122,6 +122,7 @@ html {
 
 .goto {
   position: fixed;
+  z-index: 5;
   bottom: 50px;
   right: 2%;
   width: 50px;
