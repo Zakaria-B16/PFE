@@ -6,14 +6,6 @@
     <title>PV Sizer</title>
     <!-- ################### Favicon ###################### -->
     <link rel="shortcut icon" type="img/png" href="img/favicon.png" />
-    <!-- ################### MapBox File ###################### -->
-    <link
-      href="https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.css"
-      rel="stylesheet"
-    />
-    <script src="https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.js"></script>
-    <!-- ################### Html 2 Pdf File ###################### -->
-    <script src="js/lib/html2pdf.bundle.min.js"></script>
     <!-- ################### Font-Awesome CSS File ###################### -->
     <link
       rel="stylesheet"
@@ -28,92 +20,134 @@
       integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
       crossorigin="anonymous"
     />
-    <!-- ################### Style CSS File ###################### -->
-    <link rel="stylesheet" href="css/style.css" />
     <!-- ################### Normalize CSS File ###################### -->
     <link rel="stylesheet" href="css/normalize.css" />
+    <!-- ################### Style CSS File ###################### -->
+    <link rel="stylesheet" href="css/main-style.css" />
   </head>
   <body>
-    <div class="sizing">
+    <a href="#"
+      ><div class="go-top">
+        <i class="fa fa-chevron-up" aria-hidden="true"></i></div
+    ></a>
+    <div id="landing">
+      <nav>
+        <div class="container">
+          <h1 class="text-center">
+            <i class="fas fa-solar-panel"></i> PV Sizer
+          </h1>
+          <div class="language">
+            <ul class="lang-list">
+              <li>
+                <button class="active">
+                  EN
+                </button>
+              </li>
+              <li>
+                <button>FR</button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
       <div class="container">
-        <h1 class="text-center"><i class="fas fa-solar-panel"></i> PV Sizer</h1>
-        <form id="pv-form">
-          <div class="row mb-1">
-            <div class="col-lg-8 col-md-6">
-              <div>Enter your location</div>
-              <input
-                type="text"
-                id="location-input"
-                class="form-control mb-2"
-                placeholder="Location"
-                required
-              />
+        <div class="sizing">
+          <div class="overlay"></div>
+          <div class="intro">
+            <h1>Wellcome To PV Sizer</h1>
+            <div class="text">
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+              Molestiae reiciendis repellendus corporis labore earum quidem
+              sequi velit suscipit at amet, doloremque, voluptatum asperiores
+              veritatis assumenda non, autem consequuntur! Et, magni!
             </div>
-            <div class="col-lg-4 col-md-6">
-              <div>Enter number day of autonomy</div>
-              <input
-                id="number-day-input"
-                class="form-control mb-2"
-                type="number"
-                step="any"
-                min="0"
-                placeholder="Days"
-                required
-              />
+            <div class="go-to row">
+              <a href="sizing-index.html" class="col-md-6"
+                ><button class="start-btn">
+                  Start Sizing
+                </button></a
+              >
+              <a href="#about" class="col-md-6"
+                ><button class="about-btn">
+                  About Our Work
+                </button></a
+              >
             </div>
           </div>
-          <div class="container">
-            <div class="row justify-content-between">
-              <button class="add btn btn-success col-lg-9 col-md-7 mb-2">
-                ADD CHARGE
-              </button>
-              <button class="delete btn btn-danger col-lg-2 col-md-4 mb-2">
-                DELETE CHARGE
-              </button>
-            </div>
-          </div>
-          <div class="loads"></div>
-          <button type="submit" class="btn btn-primary btn-block mt-1">
-            START
-          </button>
-        </form>
-        <div id="address" class="card-block mt-2 text-center"></div>
-        <div id="map"></div>
-        <div id="geocode" class="card-block mt-2"></div>
-        <div id="solar-irradiation" class="card-block mt-2"></div>
-        <div id="charge-power" class="card-block mt-2"></div>
-        <div id="sizing" class="card-block mt-2 mb-2"></div>
-        <form id="exemple" class="pb-2"></form>
-        <div id="pv-number" class="card-block mb-2"></div>
-        <div id="battery-number" class="card-block mt-2 mb-2"></div>
-        <div id="regulator" class="card-block mt-2 pb-2"></div>
-        <form id="cable-form" class="container"></form>
-        <div id="cable" class="card-block pb-2"></div>
-        <!-- <div id="schema-pv" class="card-block mb-2"></div>
-        <div id="schema-battery" class="card-block mb-2"></div> -->
-        <a class="goto" href="#"
-          ><i class="fa fa-arrow-up" aria-hidden="true"></i
-        ></a>
+        </div>
       </div>
     </div>
-
+    <div id="about">
+      <div class="container">
+        <div class="row">
+          <div class="wrapper col-lg-6">
+            <h1>Our Work</h1>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam
+              corporis dolores quod a tenetur omnis eos accusantium excepturi
+              facere, suscipit deserunt dolore necessitatibus sit laboriosam
+              inventore voluptas incidunt voluptatem pariatur perspiciatis!
+              Quisquam dolore aliquid numquam dolor laudantium autem repellendus
+              commodi. Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              Totam odio maiores fugit voluptates ipsum aliquid animi voluptatem
+              repellat saepe, nostrum molestiae rerum, quae incidunt mollitia
+              maxime aspernatur pariatur quaerat ipsam! Commodi est omnis
+              distinctio, natus obcaecati fugit nihil veritatis totam.
+            </p>
+          </div>
+          <div class="wrapper col-lg-6">
+            <div class="icon">
+              <img src="img/pv-sizer.jpg" alt="" />
+            </div>
+            <div class="btns">
+              <a href="sizing-index.html"
+                ><button class="sizing-btn">
+                  Start Sizing
+                </button></a
+              >
+              <a href="https://github.com/Zakaria-B16/PFE">
+                <button class="code-btn">See The Code</button></a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="footer">
+      <div class="container">
+        <div class="end">
+          <div class="made">
+            Made By Zakaria BOURENANE & Yanis BENMEZIANE
+          </div>
+          <div class="copy">
+            ALL RIGHTS RESERVED 2020
+            <i class="fa fa-copyright" aria-hidden="true"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ################### jQuery Js File ###################### -->
     <script
       src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
       integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
       crossorigin="anonymous"
     ></script>
+    <!-- ################### Popper Js File ###################### -->
+
     <script
       src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
       integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
       crossorigin="anonymous"
     ></script>
+    <!-- ################### Bootstrap Js File ###################### -->
+
     <script
       src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
       integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
       crossorigin="anonymous"
     ></script>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script type="module" src="js/main.js"></script>
-    <script type="module" src="js/mapbox.js"></script>
+    <!-- ################### Main Js File ###################### -->
+
+    <script src="js/lang.js"></script>
   </body>
 </html>

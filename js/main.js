@@ -26,18 +26,11 @@ const PVSizer = async (e) => {
 
   // Clear Complete Address
   document.getElementById("address").innerHTML = ``;
+  document.getElementById("address").innerHTML = ``;
 
   // Clear GeoMetry
-  document.getElementById("geocode").innerHTML = `<div class="loading">
-  <div class="obj"></div>
-  <div class="obj"></div>
-  <div class="obj"></div>
-  <div class="obj"></div>
-  <div class="obj"></div>
-  <div class="obj"></div>
-  <div class="obj"></div>
-  <div class="obj"></div>
-</div>`;
+  document.getElementById("geocode").innerHTML = ``;
+  document.getElementById("geocode").innerHTML = ``;
 
   // Clear Irradiation
   document.getElementById("solar-irradiation").innerHTML = ``;
@@ -70,6 +63,16 @@ const PVSizer = async (e) => {
   if (loads.childNodes.length === 0) {
     ErrorPopup(form);
   } else {
+    document.getElementById("geocode").innerHTML = `<div class="loading">
+  <div class="obj"></div>
+  <div class="obj"></div>
+  <div class="obj"></div>
+  <div class="obj"></div>
+  <div class="obj"></div>
+  <div class="obj"></div>
+  <div class="obj"></div>
+  <div class="obj"></div>
+</div>`;
     // Get Location From Form
     location = locationInput.value;
 
@@ -107,7 +110,7 @@ const PVSizer = async (e) => {
       mapboxFunction(lat, lng);
       // Render Complete Address
       let addressOutput = `<h3 class="text-center">
-      <i class="fa fa-map-marker-alt" aria-hidden="true"></i> ${addressName}
+      <i class="fa fa-map-marker-alt" aria-hidden="true"></i> <span>${addressName}</span>
     </h3>`;
 
       // Render Geometry
@@ -116,13 +119,13 @@ const PVSizer = async (e) => {
         <strong
           ><i class="fab fa-audible"></i>
           <p>Angle Of Inclination :</p> </strong
-        >${angle}°
+        ><span>${angle}°</span>
       </li>
       <li class="list-group-item">
         <strong
           ><i class="fa fa-compass" aria-hidden="true"></i>
           <p>Orientation :</p> </strong
-        >${orientation}
+        ><span>${orientation}</span>
       </li>
     </ul>`;
 
@@ -132,13 +135,13 @@ const PVSizer = async (e) => {
         <strong
           ><i class="fa fa-sun" aria-hidden="true"></i>
           <p>Solar Irradiance On The ${day1} :</p> </strong
-        >${firstIrradiation} Wh/m^2
+        ><span>${firstIrradiation} Wh/m^2</span>
       </li>
       <li class="list-group-item">
         <strong
           ><i class="far fa-sun" aria-hidden="true"></i>
           <p>Solar Irradiance On The ${day3} :</p> </strong
-        >${secondIrradiation} Wh/m^2
+        ><span>${secondIrradiation} Wh/m^2</span>
       </li>
     </ul>`;
 
@@ -148,13 +151,13 @@ const PVSizer = async (e) => {
         <strong
           ><i class="fa fa-bolt" aria-hidden="true"></i>
           <p>Daily Energy Consomation :</p> </strong
-        >${sum} Wh/Day
+        ><span>${sum} Wh/Day</span>
       </li>
       <li class="list-group-item">
         <strong
           ><i class="fas fa-plug" aria-hidden="true"></i>
           <p>Daily Power Consomation :</p> </strong
-        >${totalPower} W/Day
+        ><span>${totalPower} W/Day</span>
       </li>
     </ul>`;
 
@@ -163,13 +166,13 @@ const PVSizer = async (e) => {
         <strong
           ><i class="fas fa-border-all"></i>
           <p>PV Power :</p> </strong
-        >${pvPower} Wc
+        ><span>${pvPower} Wc</span>
       </li>
       <li class="list-group-item">
         <strong
           ><i class="fas fa-car-battery" aria-hidden="true"></i>
           <p>Battery Capacity :</p></strong
-        >${battery} Ah
+        ><span>${battery} Ah</span>
       </li>
     </ul>`;
 

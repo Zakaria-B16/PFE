@@ -12,13 +12,13 @@ add.addEventListener("click", (e) => {
 
   // Create Container
   let container = document.createElement("div");
-  container.classList = "container";
+  container.classList = "container mt-1 mb-2";
 
   // Create Charge
-  let newCharge = `<div class="charge row justify-content-between">
+  let newCharge = `<div class="charge row justify-content-between mb-2">
   <input
   id="number"
-  class="number col-md-3 mb-1 mt-1 form-control"
+  class="number col-md-3"
   type="number"
   step="any"
   min="0"
@@ -28,7 +28,7 @@ add.addEventListener("click", (e) => {
 
 <input
   id="power"
-  class="power col-md-4 mb-1 mt-1 form-control"
+  class="power col-md-4"
   type="number"
   step="any"
   min="0"
@@ -40,7 +40,7 @@ add.addEventListener("click", (e) => {
   id="time"
   step="any"
   min="0"
-  class="time col-md-4 mb-1 mt-1 form-control"
+  class="time col-md-4"
   type="number"
   placeholder="Use Time In Hours (ex : 3)"
   required

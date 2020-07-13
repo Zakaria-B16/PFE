@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PV Sizer</title>
+    <!-- ################### Favicon ###################### -->
+    <link rel="shortcut icon" type="img/png" href="img/favicon.png" />
+    <!-- ################### MapBox File ###################### -->
+    <link
+      href="https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.css"
+      rel="stylesheet"
+    />
+    <script src="https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.js"></script>
+    <!-- ################### Html 2 Pdf File ###################### -->
+    <script src="js/lib/html2pdf.bundle.min.js"></script>
+    <!-- ################### Font-Awesome CSS File ###################### -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
+      integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ="
+      crossorigin="anonymous"
+    />
+    <!-- ################### Bootstrap CSS File ###################### -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+    <!-- ################### Style CSS File ###################### -->
+    <link rel="stylesheet" href="css/style.css" />
+    <!-- ################### Normalize CSS File ###################### -->
+    <link rel="stylesheet" href="css/normalize.css" />
+  </head>
+  <body>
+    <div id="sizing">
+      <nav>
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="home col-sm-auto col-md-3 text-left">
+              <a href="index.html"
+                ><i class="fa fa-chevron-left" aria-hidden="true"></i
+              ></a>
+            </div>
+            <h1 class="text-center col-sm-auto col-md-6">
+              <i class="fas fa-solar-panel"></i> PV Sizer
+            </h1>
+            <div class="language col-sm-auto col-md-3 text-right">
+              <ul class="lang-list">
+                <li>
+                  <button class="active" data-lang="en">
+                    EN
+                  </button>
+                </li>
+                <li>
+                  <button data-lang="fr">FR</button>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div class="container">
+        <form id="pv-form">
+          <div class="row mt-1 mb-1">
+            <div class="col-lg-8 col-md-6">
+              <div>Enter your location</div>
+              <input
+                type="text"
+                id="location-input"
+                class="field"
+                placeholder="Location"
+                required
+              />
+            </div>
+            <div class="col-lg-4 col-md-6">
+              <div>Enter number day of autonomy</div>
+              <input
+                id="number-day-input"
+                class="field"
+                type="number"
+                step="any"
+                min="0"
+                placeholder="Days"
+                required
+              />
+            </div>
+          </div>
+          <div class="container mt-1 mb-1">
+            <div class="row justify-content-between">
+              <button class="add confirm btn col-lg-9 col-md-7 mt-1 mb-1">
+                ADD CHARGE
+              </button>
+              <button class="delete btn col-lg-2 col-md-4 mt-1 mb-1">
+                DELETE CHARGE
+              </button>
+            </div>
+          </div>
+          <div class="loads"></div>
+          <button type="submit" class="btn submit btn-block mt-1 mb-1">
+            START
+          </button>
+        </form>
+        <div id="address" class="mt-2 text-center"></div>
+        <div id="map"></div>
+        <div id="geocode" class="card-block mt-2"></div>
+        <div id="solar-irradiation" class="card-block mt-2"></div>
+        <div id="charge-power" class="card-block mt-2"></div>
+        <div id="sizing" class="card-block mt-2 mb-2"></div>
+        <form id="exemple" class="mb-2"></form>
+        <div id="pv-number" class="card-block mb-2"></div>
+        <div id="battery-number" class="card-block mt-2 mb-2"></div>
+        <div id="regulator" class="card-block mt-2 mb-2"></div>
+        <form id="cable-form" class="container"></form>
+        <div id="cable" class="card-block mb-2"></div>
+        <!-- <div id="schema-pv" class="card-block mb-2"></div>
+        <div id="schema-battery" class="card-block mb-2"></div> -->
+        <a class="go-top" href="#"
+          ><i class="fa fa-chevron-up" aria-hidden="true"></i
+        ></a>
+      </div>
+      <div id="footer">
+        <div class="container">
+          <div class="end">
+            <div class="made">
+              Made By Zakaria BOURENANE & Yanis BENMEZIANE
+            </div>
+            <div class="copy">
+              ALL RIGHTS RESERVED 2020
+              <i class="fa fa-copyright" aria-hidden="true"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script
+      type="text/javascript"
+      src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
+    ></script>
+
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+      integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script type="module" src="js/main.js"></script>
+    <script type="module" src="js/mapbox.js"></script>
+    <script type="module" src="js/lang.js"></script>
+  </body>
+</html>

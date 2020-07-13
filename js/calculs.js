@@ -210,7 +210,7 @@ export const installtionSizing = async (
     </div>
   </div>
   </div>
-  <button type="submit" class="btn btn-info btn-block">CONFIRM</button>`;
+  <button type="submit" class="btn confirm btn-block">CONFIRM</button>`;
 
   // Scroll To Exemple Form
   exempleFrom.scrollIntoView({ block: "end", behavior: "smooth" });
@@ -313,19 +313,19 @@ const PVBatterySizing = (
       <strong
         ><i class="fas fa-align-justify"></i>
         <p>PV Module Number :</p> </strong
-      > ${pvNumber}
+      > <span>${pvNumber}</span>
     </li>
     <li class="list-group-item">
       <strong
         ><i class="fas fa-align-justify"></i>
         <p>PV Module Serie Number :</p></strong
-      > ${pvSerieNumber}
+      > <span>${pvSerieNumber}</span>
     </li>
     <li class="list-group-item">
       <strong
         ><i class="fas fa-align-justify"></i>
         <p>PV Module Parallel Number :</p></strong
-      > ${pvParalelNumber}
+      > <span>${pvParalelNumber}</span>
     </li>
   </ul>`;
 
@@ -335,19 +335,19 @@ const PVBatterySizing = (
       <strong
         ><i class="fas fa-battery-full"></i>
         <p>Battery Number :</p> </strong
-      > ${batteryNumber}
+      > <span>${batteryNumber}</span>
     </li>
     <li class="list-group-item">
       <strong
         ><i class="fas fa-battery-full"></i>
         <p>Battery Serie Number :</p></strong
-      > ${batterySerieNumber}
+      > <span>${batterySerieNumber}</span>
     </li>
     <li class="list-group-item">
       <strong
         ><i class="fas fa-battery-full"></i>
         <p>Battery Parallel Number :</p></strong
-      > ${batteryParalelNumber}
+      > <span>${batteryParalelNumber}</span>
     </li>
     </ul>`;
 
@@ -357,10 +357,10 @@ const PVBatterySizing = (
       <strong
         ><i class="fas fa-wave-square"></i>
         <p>Inverter :</p> </strong
-      > 12V/${ondPower}W
+      > <span>12V/${ondPower}W</span>
     </li>
     </ul>
-    <button id="cable-btn" class="btn btn-dark btn-block">START CABLE SIZING</button>`;
+    <button id="cable-btn" class="btn submit btn-block mb-2">START CABLE SIZING</button>`;
 
     // Output PV MOdules
     document.getElementById("pv-number").innerHTML = pvNumberOutput;
@@ -411,11 +411,11 @@ const cableSizingFunction = (
             type="number"
             step="any"
             min="0"
-            class="col-md-5 form-control mb-2"
+            class="col-md-5 mb-2"
             placeholder="Cable length in m"
             required
           />
-          <button type="submit" class="btn btn-warning col-md-5 mb-2">
+          <button type="submit" class="btn confirm col-md-5 mb-2">
             CABLE SIZING
           </button>
         </div>`;
@@ -446,10 +446,10 @@ const cableSizingFunction = (
               <strong
                 ><i class="far fa-dot-circle"></i>
                 <p>Cable Section :</p> </strong
-              > ${cableSection}mm^2
+              > <span>${cableSection}mm^2</span>
             </li>
             </ul>
-            <button id="PDF-btn" class="btn btn-secondary btn-block">
+            <button id="PDF-btn" class="btn submit btn-block">
             GENERATE RESULTS AS A PDF FILE
             </button>
             `;
