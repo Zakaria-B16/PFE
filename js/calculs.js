@@ -210,7 +210,7 @@ export const installtionSizing = async (
     </div>
   </div>
   </div>
-  <button type="submit" class="btn confirm btn-block">CONFIRM</button>`;
+  <button type="submit" class="btn submit btn-block">CONFIRM</button>`;
 
   // Scroll To Exemple Form
   exempleFrom.scrollIntoView({ block: "end", behavior: "smooth" });
@@ -415,7 +415,7 @@ const cableSizingFunction = (
             placeholder="Cable length in m"
             required
           />
-          <button type="submit" class="btn confirm col-md-5 mb-2">
+          <button type="submit" class="btn add col-md-5 mb-2">
             CABLE SIZING
           </button>
         </div>`;

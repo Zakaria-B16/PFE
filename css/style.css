@@ -24,6 +24,10 @@ body {
   background: linear-gradient(to bottom, #004e92, #000428);
 }
 
+#sizer {
+  padding-bottom: 10px;
+}
+
 nav {
   width: 100%;
   background-color: #90fd02;
@@ -215,14 +219,14 @@ input:not([type='radio']):-webkit-autofill, input:not([type='radio']):-webkit-au
   background-color: #0244a8;
 }
 
-.confirm {
+.add {
   background-color: #90fd02;
   color: #000000 !important;
   -webkit-transition: .5s;
   transition: .5s;
 }
 
-.confirm:hover, .confirm:focus {
+.add:hover, .add:focus {
   background-color: #73ca02;
 }
 
@@ -481,7 +485,7 @@ input:not([type='radio']):-webkit-autofill, input:not([type='radio']):-webkit-au
 
 #footer {
   position: absolute;
-  bottom: 0;
+  bottom: -60px;
   left: 0;
   width: 100%;
   min-height: 50px;
