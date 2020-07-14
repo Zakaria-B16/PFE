@@ -404,6 +404,12 @@ input:not([type='radio']):-webkit-autofill, input:not([type='radio']):-webkit-au
   margin-bottom: 0;
 }
 
+.alert-danger {
+  color: #fa8f8f !important;
+  border-color: #fa8f8f !important;
+  background-color: #550113 !important;
+}
+
 #pdf {
   margin: 100px 20px;
 }
@@ -471,36 +477,6 @@ input:not([type='radio']):-webkit-autofill, input:not([type='radio']):-webkit-au
 
 .go-top:hover i {
   color: #90fd02;
-}
-
-.return {
-  top: 25px;
-  left: 1%;
-}
-
-.return span {
-  opacity: 0;
-  width: 0%;
-  color: #90fd02;
-}
-
-.return:hover {
-  width: 210px;
-  padding: 5px;
-  border-radius: 25px;
-}
-
-.return:hover span {
-  display: inline;
-  width: 100%;
-  opacity: 1;
-  font-size: 16px;
-  font-weight: bold;
-  margin-left: 5px;
-}
-
-.return:hover i {
-  float: right;
 }
 
 #footer {

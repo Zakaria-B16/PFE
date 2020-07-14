@@ -26,10 +26,8 @@ const PVSizer = async (e) => {
 
   // Clear Complete Address
   document.getElementById("address").innerHTML = ``;
-  document.getElementById("address").innerHTML = ``;
 
   // Clear GeoMetry
-  document.getElementById("geocode").innerHTML = ``;
   document.getElementById("geocode").innerHTML = ``;
 
   // Clear Irradiation
