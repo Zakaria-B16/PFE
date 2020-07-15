@@ -164,13 +164,13 @@ const PVSizer = async (e) => {
         <strong
           ><i class="fas fa-border-all"></i>
           <p>PV Power :</p> </strong
-        ><span>${pvPower} Wc</span>
+        ><span> ${pvPower} Wc</span>
       </li>
       <li class="list-group-item">
         <strong
           ><i class="fas fa-car-battery" aria-hidden="true"></i>
           <p>Battery Capacity :</p></strong
-        ><span>${battery} Ah</span>
+        ><span> ${battery} Ah</span>
       </li>
     </ul>`;
 
