@@ -1,4 +1,5 @@
 export const loads = document.querySelector(".loads");
+import { loadTranslater } from "./text.js";
 const add = document.querySelector(".add");
 const del = document.querySelector(".delete");
 
@@ -52,6 +53,8 @@ add.addEventListener("click", (e) => {
 
   // Render Container
   loads.appendChild(container);
+
+  loadTranslater();
 });
 
 // Delete Charge

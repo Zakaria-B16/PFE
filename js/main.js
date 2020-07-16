@@ -2,6 +2,7 @@ import { geocode, SolarIrradiation } from "./API.js";
 import { startCalcul, installtionSizing } from "./calculs.js";
 import { loads, ErrorPopup } from "./component.js";
 import { mapboxFunction } from "./mapbox.js";
+import { continueTranslating } from "./text.js";
 
 // Select DOM Elements
 const form = document.getElementById("pv-form");
@@ -116,13 +117,13 @@ const PVSizer = async (e) => {
       <li class="list-group-item">
         <strong
           ><i class="fab fa-audible"></i>
-          <p>Angle Of Inclination :</p> </strong
+          <p class="angle">Angle Of Inclination :</p> </strong
         ><span>${angle}°</span>
       </li>
       <li class="list-group-item">
         <strong
           ><i class="fa fa-compass" aria-hidden="true"></i>
-          <p>Orientation :</p> </strong
+          <p class="orientation">Orientation :</p> </strong
         ><span>${orientation}</span>
       </li>
     </ul>`;
@@ -132,13 +133,13 @@ const PVSizer = async (e) => {
       <li class="list-group-item">
         <strong
           ><i class="fa fa-sun" aria-hidden="true"></i>
-          <p>Solar Irradiance On The ${day1} :</p> </strong
+          <p class="first-irradiance">Solar Irradiance On The </p><p class="day-variable">${day1} :</p> </strong
         ><span>${firstIrradiation} Wh/m^2</span>
       </li>
       <li class="list-group-item">
         <strong
           ><i class="far fa-sun" aria-hidden="true"></i>
-          <p>Solar Irradiance On The ${day3} :</p> </strong
+          <p class="second-irradiance">Solar Irradiance On The </p><p class="day-variable">${day3} :</p> </strong
         ><span>${secondIrradiation} Wh/m^2</span>
       </li>
     </ul>`;
@@ -148,13 +149,13 @@ const PVSizer = async (e) => {
       <li class="list-group-item">
         <strong
           ><i class="fa fa-bolt" aria-hidden="true"></i>
-          <p>Daily Energy Consomation :</p> </strong
+          <p class="energy">Daily Energy Consomation :</p> </strong
         ><span>${sum} Wh/Day</span>
       </li>
       <li class="list-group-item">
         <strong
           ><i class="fas fa-plug" aria-hidden="true"></i>
-          <p>Daily Power Consomation :</p> </strong
+          <p class="d-power">Daily Power Consomation :</p> </strong
         ><span>${totalPower} W/Day</span>
       </li>
     </ul>`;
@@ -163,13 +164,13 @@ const PVSizer = async (e) => {
       <li class="list-group-item">
         <strong
           ><i class="fas fa-border-all"></i>
-          <p>PV Power :</p> </strong
+          <p class="pv-power">PV Power :</p> </strong
         ><span> ${pvPower} Wc</span>
       </li>
       <li class="list-group-item">
         <strong
           ><i class="fas fa-car-battery" aria-hidden="true"></i>
-          <p>Battery Capacity :</p></strong
+          <p class="pv-battery">Battery Capacity :</p></strong
         ><span> ${battery} Ah</span>
       </li>
     </ul>`;
@@ -189,6 +190,7 @@ const PVSizer = async (e) => {
       // Output Sizing
       document.getElementById("sizing").innerHTML = sizingOutput;
 
+      continueTranslating();
       // Scroll To Address After 3s
       setTimeout(() => {
         document

@@ -1,4 +1,10 @@
 import { generatePDF } from "./lib/pdf.js";
+import {
+  calculTranslate,
+  cableTranslate,
+  pdfTranslate,
+  exempleTranslate,
+} from "./text.js";
 //import { makePVSchema, makeBatterySchema } from "./schema.js";
 
 // Calculation Function
@@ -72,7 +78,7 @@ export const installtionSizing = async (
   exempleFrom.innerHTML = `<div class="input-group">
   <div class="input-group-prepend mb-2">
     <div class="input-group-text">
-      <p class="col-12 mb-1">Choose your PV module :</p>
+      <p class="d-block text-center mb-1 choose-1">Choose your PV module :</p>
       <div>
         <input
           id="pv-1"
@@ -140,7 +146,7 @@ export const installtionSizing = async (
   <div class="input-group">
   <div class="input-group-prepend mb-2">
     <div class="input-group-text">
-      <p class="col-12 mb-1">Choose your battery model :</p>
+      <p class="d-block text-center mb-1 choose-2">Choose your battery model :</p>
       <div>
         <input
           id="battery-1"
@@ -210,8 +216,9 @@ export const installtionSizing = async (
     </div>
   </div>
   </div>
-  <button type="submit" class="btn submit btn-block">CONFIRM</button>`;
+  <button type="submit" class="btn submit btn-block choose-confirm">CONFIRM</button>`;
 
+  exempleTranslate();
   // Scroll To Exemple Form
   exempleFrom.scrollIntoView({ block: "end", behavior: "smooth" });
 
@@ -312,19 +319,19 @@ const PVBatterySizing = (
     <li class="list-group-item">
       <strong
         ><i class="fas fa-align-justify"></i>
-        <p>PV Module Number :</p> </strong
+        <p class="pv-m-number">PV Module Number :</p> </strong
       > <span>${pvNumber}</span>
     </li>
     <li class="list-group-item">
       <strong
         ><i class="fas fa-align-justify"></i>
-        <p>PV Module Serie Number :</p></strong
+        <p class="pv-ms-number">PV Module Serie Number :</p></strong
       > <span>${pvSerieNumber}</span>
     </li>
     <li class="list-group-item">
       <strong
         ><i class="fas fa-align-justify"></i>
-        <p>PV Module Parallel Number :</p></strong
+        <p class="pv-mp-number">PV Module Parallel Number :</p></strong
       > <span>${pvParalelNumber}</span>
     </li>
   </ul>`;
@@ -334,19 +341,19 @@ const PVBatterySizing = (
     <li class="list-group-item">
       <strong
         ><i class="fas fa-battery-full"></i>
-        <p>Battery Number :</p> </strong
+        <p class="b-number">Battery Number :</p> </strong
       > <span>${batteryNumber}</span>
     </li>
     <li class="list-group-item">
       <strong
         ><i class="fas fa-battery-full"></i>
-        <p>Battery Serie Number :</p></strong
+        <p class="b-s-number">Battery Serie Number :</p></strong
       > <span>${batterySerieNumber}</span>
     </li>
     <li class="list-group-item">
       <strong
         ><i class="fas fa-battery-full"></i>
-        <p>Battery Parallel Number :</p></strong
+        <p class="b-p-number">Battery Parallel Number :</p></strong
       > <span>${batteryParalelNumber}</span>
     </li>
     </ul>`;
@@ -356,11 +363,11 @@ const PVBatterySizing = (
     <li class="list-group-item">
       <strong
         ><i class="fas fa-wave-square"></i>
-        <p>Inverter :</p> </strong
+        <p class="ond">Inverter :</p> </strong
       > <span>12V/${ondPower}W</span>
     </li>
     </ul>
-    <button id="cable-btn" class="btn submit btn-block mb-2">START CABLE SIZING</button>`;
+    <button id="cable-btn" class="btn submit btn-block mb-2 cable-btn">START CABLE SIZING</button>`;
 
     // Output PV MOdules
     document.getElementById("pv-number").innerHTML = pvNumberOutput;
@@ -371,6 +378,7 @@ const PVBatterySizing = (
     // Output Inventer
     document.getElementById("regulator").innerHTML = ondOutput;
 
+    calculTranslate();
     // Scrolll To Regulator
     document
       .getElementById("regulator")
@@ -411,11 +419,11 @@ const cableSizingFunction = (
             type="number"
             step="any"
             min="0"
-            class="col-md-5 mb-2"
+            class="col-md-5 mb-2 cable-length"
             placeholder="Cable length in m"
             required
           />
-          <button type="submit" class="btn add col-md-5 mb-2">
+          <button type="submit" class="btn add col-md-5 mb-2 size-cable">
             CABLE SIZING
           </button>
         </div>`;
@@ -428,6 +436,7 @@ const cableSizingFunction = (
       .getElementById("cable-form")
       .scrollIntoView({ block: "end", behavior: "smooth" });
 
+    cableTranslate();
     document.getElementById("cable-form").addEventListener("submit", (e) => {
       e.preventDefault();
 
@@ -445,11 +454,11 @@ const cableSizingFunction = (
             <li class="list-group-item">
               <strong
                 ><i class="far fa-dot-circle"></i>
-                <p>Cable Section :</p> </strong
+                <p class="cable-section">Cable Section :</p> </strong
               > <span>${cableSection}mm^2</span>
             </li>
             </ul>
-            <button id="PDF-btn" class="btn submit btn-block">
+            <button id="PDF-btn" class="btn submit btn-block pdf-btn">
             GENERATE RESULTS AS A PDF FILE
             </button>
             `;
@@ -457,6 +466,7 @@ const cableSizingFunction = (
       // Output Cable Section
       document.getElementById("cable").innerHTML = cableOUtput;
 
+      pdfTranslate();
       // Scroll To Cable Section
       document
         .getElementById("cable")

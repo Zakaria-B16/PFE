@@ -34,38 +34,38 @@
     <link rel="stylesheet" href="css/normalize.css" />
   </head>
   <body>
-    <div id="sizer">
-      <nav>
-        <div class="container">
-          <div class="row justify-content-center">
-            <div class="home col-sm-auto col-md-3 text-left">
-              <a href="index.html"
-                ><i class="fa fa-chevron-left" aria-hidden="true"></i
-              ></a>
-            </div>
-            <h1 class="text-center col-sm-auto col-md-6">
-              <i class="fas fa-solar-panel"></i> PV Sizer
-            </h1>
-            <div class="language col-sm-auto col-md-3 text-right">
-              <ul class="lang-list">
-                <li>
-                  <button class="active" data-lang="en">
-                    EN
-                  </button>
-                </li>
-                <li>
-                  <button data-lang="fr">FR</button>
-                </li>
-              </ul>
-            </div>
+    <nav>
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="home col-sm-auto col-md-3 text-left">
+            <a href="index.html"
+              ><i class="fa fa-chevron-left" aria-hidden="true"></i
+            ></a>
+          </div>
+          <h1 class="text-center col-sm-auto col-md-6">
+            <i class="fas fa-solar-panel"></i> PV Sizer
+          </h1>
+          <div class="language col-sm-auto col-md-3 text-right">
+            <ul class="lang-list">
+              <li>
+                <button class="active" data-lang="en">
+                  EN
+                </button>
+              </li>
+              <li>
+                <button data-lang="fr">FR</button>
+              </li>
+            </ul>
           </div>
         </div>
-      </nav>
+      </div>
+    </nav>
+    <div id="sizer">
       <div class="container sizing-container">
         <form id="pv-form">
           <div class="row mt-1 mb-1">
-            <div class="col-lg-8 col-md-6">
-              <div>Enter your location</div>
+            <div class="col-lg-7 col-md-6">
+              <div class="location">Enter your location</div>
               <input
                 type="text"
                 id="location-input"
@@ -74,8 +74,8 @@
                 required
               />
             </div>
-            <div class="col-lg-4 col-md-6">
-              <div>Enter number day of autonomy</div>
+            <div class="col-lg-5 col-md-6">
+              <div class="days">Enter number day of autonomy</div>
               <input
                 id="number-day-input"
                 class="field"
@@ -89,11 +89,11 @@
           </div>
           <div class="container mt-1 mb-1">
             <div class="row justify-content-between">
-              <button class="add confirm btn col-lg-9 col-md-7 mt-1 mb-1">
-                ADD CHARGE
+              <button class="add confirm btn col-lg-8 col-md-7 mt-1 mb-1">
+                ADD A CHARGE
               </button>
-              <button class="delete btn col-lg-2 col-md-4 mt-1 mb-1">
-                DELETE CHARGE
+              <button class="delete btn col-lg-3 col-md-4 mt-1 mb-1">
+                DELETE A CHARGE
               </button>
             </div>
           </div>
@@ -122,18 +122,18 @@
       </div>
     </div>
     <div id="footer">
-        <div class="container">
-          <div class="end">
-            <div class="made">
-              Made By Zakaria BOURENANE & Yanis BENMEZIANE
-            </div>
-            <div class="copy">
-              ALL RIGHTS RESERVED 2020
-              <i class="fa fa-copyright" aria-hidden="true"></i>
-            </div>
+      <div class="container">
+        <div class="end">
+          <div class="made">
+            Made By Zakaria BOURENANE & Yanis BENMEZIANE
+          </div>
+          <div class="copy">
+            ALL RIGHTS RESERVED 2020
+            <i class="fa fa-copyright" aria-hidden="true"></i>
           </div>
         </div>
       </div>
+    </div>
 
     <script
       type="text/javascript"
@@ -160,6 +160,6 @@
     <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
     <script type="module" src="js/main.js"></script>
     <script type="module" src="js/mapbox.js"></script>
-    <script type="module" src="js/lang.js"></script>
+    <script type="module" src="js/text.js"></script>
   </body>
 </html>

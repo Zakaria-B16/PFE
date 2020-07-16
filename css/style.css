@@ -359,6 +359,10 @@ input:not([type='radio']):-webkit-autofill, input:not([type='radio']):-webkit-au
   margin-left: 20px;
 }
 
+.list-group-item p.day-variable {
+  margin-left: 0 !important;
+}
+
 .list-group-item span {
   color: #ffffff;
 }
