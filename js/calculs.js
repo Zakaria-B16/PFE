@@ -1,10 +1,10 @@
 import { generatePDF } from "./lib/pdf.js";
 import {
-  calculTranslate,
-  cableTranslate,
-  pdfTranslate,
-  exempleTranslate,
-} from "./text.js";
+  calculTranslater,
+  cableTranslater,
+  pdfTranslater,
+  exempleTranslater,
+} from "./lang.js";
 //import { makePVSchema, makeBatterySchema } from "./schema.js";
 
 // Calculation Function
@@ -218,7 +218,9 @@ export const installtionSizing = async (
   </div>
   <button type="submit" class="btn submit btn-block choose-confirm">CONFIRM</button>`;
 
-  exempleTranslate();
+  // Translate
+  exempleTranslater();
+
   // Scroll To Exemple Form
   exempleFrom.scrollIntoView({ block: "end", behavior: "smooth" });
 
@@ -378,7 +380,9 @@ const PVBatterySizing = (
     // Output Inventer
     document.getElementById("regulator").innerHTML = ondOutput;
 
-    calculTranslate();
+    // Translate
+    calculTranslater();
+
     // Scrolll To Regulator
     document
       .getElementById("regulator")
@@ -431,12 +435,14 @@ const cableSizingFunction = (
     // Output Cable Form
     document.getElementById("cable-form").innerHTML = cableForm;
 
+    // Translate
+    cableTranslater();
+
     // Scroll To Render Form
     document
       .getElementById("cable-form")
       .scrollIntoView({ block: "end", behavior: "smooth" });
 
-    cableTranslate();
     document.getElementById("cable-form").addEventListener("submit", (e) => {
       e.preventDefault();
 
@@ -466,7 +472,9 @@ const cableSizingFunction = (
       // Output Cable Section
       document.getElementById("cable").innerHTML = cableOUtput;
 
-      pdfTranslate();
+      // Translate
+      pdfTranslater();
+
       // Scroll To Cable Section
       document
         .getElementById("cable")

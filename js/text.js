@@ -1,4 +1,4 @@
-const text = {
+export const text = {
   en: {
     "landing-heading": "Welcome To PV Sizer",
     "landing-text": `Proper sizing of an installation is an essential step to master, for this, we created a web app to make a pv system sizing just by inserting your location and desired charges and you, easy to use with precise results`,
@@ -21,8 +21,8 @@ const text = {
     time: "Use Time In Hours (ex : 3)",
     angle: "Angle Of Inclination :",
     orientation: "Orientation :",
-    "first-irradiance": "Solar Irradiance On The",
-    "second-irradiance": "Solar Irradiance On The",
+    "first-irradiance": "Solar Irradiance On The ",
+    "second-irradiance": "Solar Irradiance On The ",
     energy: "Daily Energy Consomation :",
     "d-power": "Daily Power Consomation :",
     "pv-power": "PV Power :",
@@ -67,8 +67,8 @@ const text = {
     time: "Durée D'utilisation (ex : 3)",
     angle: "Angle D'Inclination :",
     orientation: "Orientation :",
-    "first-irradiance": "Irradiation Solaire Le",
-    "second-irradiance": "Irradiation Solaire Le",
+    "first-irradiance": "Irradiation Solaire Le ",
+    "second-irradiance": "Irradiation Solaire Le ",
     energy: "Energie Consomée D'une journée :",
     "d-power": "Puissance Consomée D'une journée :",
     "pv-power": "Puissance Crete :",
@@ -89,211 +89,4 @@ const text = {
     "cable-section": "Section De Cable :",
     "pdf-btn": "GENERER LES RESULTATS COMME FICHER PDF",
   },
-};
-
-const landingHeading = document.querySelector(".landing-heading");
-const landingText = document.querySelector(".landing-text");
-const startBtn = document.querySelector(".start-btn");
-const aboutBtn = document.querySelector(".about-btn");
-const aboutHeading = document.querySelector(".about-heading");
-const aboutText = document.querySelector(".about-text");
-const codeBtn = document.querySelector(".code-btn");
-const sizingBtn = document.querySelector(".sizing-btn");
-const made = document.querySelector(".made");
-const copy = document.querySelector(".copy");
-const location = document.querySelector(".location");
-const days = document.querySelector(".days");
-const add = document.querySelector(".add");
-const del = document.querySelector(".delete");
-const submit = document.querySelector(".submit");
-const langBtn = document.querySelectorAll(".lang-list button");
-
-var lang;
-export function choosed() {
-  langBtn.forEach((btn) => {
-    btn.addEventListener("click", (e) => {
-      langBtn.forEach((element) => {
-        element.classList.remove("active");
-      });
-      e.target.classList.add("active");
-
-      lang = e.target.dataset.lang;
-
-      pvFormTranslater();
-      loadTranslater();
-      continueTranslating();
-      exempleTranslate();
-      calculTranslate();
-      cableTranslate();
-      pdfTranslate();
-      console.clear();
-    });
-  });
-}
-
-choosed();
-
-export const homeTranslate = (lang) => {
-  if (lang === "fr") {
-    landingHeading.innerText = text.fr["landing-heading"];
-    landingText.innerText = text.fr["landing-text"];
-    startBtn.innerText = text.fr["start-btn"];
-    aboutBtn.innerText = text.fr["about-btn"];
-    aboutHeading.innerText = text.fr["about-heading"];
-    aboutText.innerText = text.fr["about-text"];
-    sizingBtn.innerText = text.fr["start-btn"];
-    codeBtn.innerText = text.fr["code-btn"];
-    made.innerText = text.fr["made"];
-    copy.innerHTML = text.fr["copy"];
-  } else {
-    landingHeading.innerText = text.en["landing-heading"];
-    landingText.innerText = text.en["landing-text"];
-    startBtn.innerText = text.en["start-btn"];
-    aboutBtn.innerText = text.en["about-btn"];
-    aboutHeading.innerText = text.en["about-heading"];
-    aboutText.innerText = text.en["about-text"];
-    sizingBtn.innerText = text.en["start-btn"];
-    codeBtn.innerText = text.en["code-btn"];
-    made.innerText = text.en["made"];
-    copy.innerHTML = text.en["copy"];
-  }
-};
-
-const pvFormTranslater = () => {
-  if (lang === "fr") {
-    made.innerText = text.fr["made"];
-    copy.innerHTML = text.fr["copy"];
-    location.innerText = text.fr["location"];
-    document.getElementById("location-input").placeholder =
-      text.fr["location-input"];
-    days.innerText = text.fr["days"];
-    document.getElementById("number-day-input").placeholder =
-      text.fr["days-input"];
-    add.innerText = text.fr["add"];
-    del.innerText = text.fr["del"];
-    submit.innerText = text.fr["submit"];
-  } else {
-    made.innerText = text.en["made"];
-    copy.innerHTML = text.en["copy"];
-    location.innerText = text.en["location"];
-    location.innerText = text.en["location"];
-    document.getElementById("location-input").placeholder =
-      text.en["location-input"];
-    days.innerText = text.en["days"];
-    document.getElementById("number-day-input").placeholder =
-      text.en["days-input"];
-    add.innerText = text.en["add"];
-    del.innerText = text.en["del"];
-    submit.innerText = text.en["submit"];
-  }
-};
-
-export const loadTranslater = () => {
-  if (lang === "fr") {
-    document.querySelectorAll(".number").forEach((element) => {
-      element.placeholder = text.fr["number"];
-    });
-    document.querySelectorAll(".power").forEach((element) => {
-      element.placeholder = text.fr["power"];
-    });
-    document.querySelectorAll(".time").forEach((element) => {
-      element.placeholder = text.fr["time"];
-    });
-  } else {
-    document.querySelectorAll(".number").forEach((element) => {
-      element.placeholder = text.en["number"];
-    });
-    document.querySelectorAll(".power").forEach((element) => {
-      element.placeholder = text.en["power"];
-    });
-    document.querySelectorAll(".time").forEach((element) => {
-      element.placeholder = text.en["time"];
-    });
-  }
-};
-
-export const continueTranslating = () => {
-  if (lang === "fr") {
-    document.querySelector(".angle").innerText = text.fr["angle"];
-    document.querySelector(".orientation").innerText = text.fr["orientation"];
-    document.querySelector(".first-irradiance").innerText =
-      text.fr["first-irradiance"];
-    document.querySelector(".second-irradiance").innerText =
-      text.fr["second-irradiance"];
-    document.querySelector(".energy").innerText = text.fr["energy"];
-    document.querySelector(".d-power").innerText = text.fr["d-power"];
-    document.querySelector(".pv-power").innerText = text.fr["pv-power"];
-    document.querySelector(".pv-battery").innerText = text.fr["pv-battery"];
-  } else {
-    document.querySelector(".angle").innerText = text.en["angle"];
-    document.querySelector(".orientation").innerText = text.en["orientation"];
-    document.querySelector(".first-irradiance").innerText =
-      text.en["first-irradiance"];
-    document.querySelector(".second-irradiance").innerText =
-      text.en["second-irradiance"];
-    document.querySelector(".energy").innerText = text.en["energy"];
-    document.querySelector(".d-power").innerText = text.en["d-power"];
-    document.querySelector(".pv-power").innerText = text.en["pv-power"];
-    document.querySelector(".pv-battery").innerText = text.fr["pv-battery"];
-  }
-};
-
-export const exempleTranslate = () => {
-  if (lang === "fr") {
-    document.querySelector(".choose-1").innerText = text.fr["choose-1"];
-    document.querySelector(".choose-2").innerText = text.fr["choose-2"];
-    document.querySelector(".choose-confirm").innerText =
-      text.fr["choose-confirm"];
-  } else {
-    document.querySelector(".choose-1").innerText = text.en["choose-1"];
-    document.querySelector(".choose-2").innerText = text.en["choose-2"];
-    document.querySelector(".choose-confirm").innerText =
-      text.en["choose-confirm"];
-  }
-};
-
-export const calculTranslate = () => {
-  if (lang === "fr") {
-    document.querySelector(".pv-m-number").innerText = text.fr["pv-m-number"];
-    document.querySelector(".pv-ms-number").innerText = text.fr["pv-ms-number"];
-    document.querySelector(".pv-mp-number").innerText = text.fr["pv-mp-number"];
-    document.querySelector(".b-number").innerText = text.fr["b-number"];
-    document.querySelector(".b-s-number").innerText = text.fr["b-s-number"];
-    document.querySelector(".b-p-number").innerText = text.fr["b-p-number"];
-    document.querySelector(".ond").innerText = text.fr["ond"];
-    document.querySelector(".cable-btn").innerText = text.fr["cable-btn"];
-  } else {
-    document.querySelector(".pv-m-number").innerText = text.en["pv-m-number"];
-    document.querySelector(".pv-ms-number").innerText = text.en["pv-ms-number"];
-    document.querySelector(".pv-mp-number").innerText = text.en["pv-mp-number"];
-    document.querySelector(".b-number").innerText = text.en["b-number"];
-    document.querySelector(".b-s-number").innerText = text.en["b-s-number"];
-    document.querySelector(".b-p-number").innerText = text.en["b-p-number"];
-    document.querySelector(".ond").innerText = text.en["ond"];
-    document.querySelector(".cable-btn").innerText = text.en["cable-btn"];
-  }
-};
-
-export const cableTranslate = () => {
-  if (lang === "fr") {
-    document.querySelector(".cable-length").placeholder =
-      text.fr["cable-length"];
-    document.querySelector(".size-cable").innerText = text.fr["size-cable"];
-  } else {
-    document.querySelector(".cable-length").placeholder =
-      text.en["cable-length"];
-    document.querySelector(".size-cable").innerText = text.en["size-cable"];
-  }
-};
-
-export const pdfTranslate = () => {
-  if (lang === "fr") {
-    document.querySelector(".cable-section").innerText =
-      text.fr["cable-section"];
-    document.querySelector(".pdf-btn").innerText = text.fr["pdf-btn"];
-  } else {
-    document.querySelector(".cable-section").innerText =
-      text.en["cable-section"];
-    document.querySelector(".pdf-btn").innerText = text.en["pdf-btn"];
-  }
 };

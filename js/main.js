@@ -2,7 +2,7 @@ import { geocode, SolarIrradiation } from "./API.js";
 import { startCalcul, installtionSizing } from "./calculs.js";
 import { loads, ErrorPopup } from "./component.js";
 import { mapboxFunction } from "./mapbox.js";
-import { continueTranslating } from "./text.js";
+import { resultTranslater } from "./lang.js";
 
 // Select DOM Elements
 const form = document.getElementById("pv-form");
@@ -187,10 +187,12 @@ const PVSizer = async (e) => {
       // Output Charge
       document.getElementById("charge-power").innerHTML = chargeOutput;
 
+      // Translate
+      resultTranslater();
+
       // Output Sizing
       document.getElementById("sizing").innerHTML = sizingOutput;
 
-      continueTranslating();
       // Scroll To Address After 3s
       setTimeout(() => {
         document
