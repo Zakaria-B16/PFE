@@ -8,7 +8,6 @@ const aboutBtn = document.querySelector(".about-btn");
 const aboutHeading = document.querySelector(".about-heading");
 const aboutText = document.querySelector(".about-text");
 const codeBtn = document.querySelector(".code-btn");
-const sizingBtn = document.querySelector(".sizing-btn");
 const made = document.querySelector(".made");
 const copy = document.querySelector(".copy");
 const location = document.querySelector(".location");
@@ -35,7 +34,7 @@ const chooseLang = () => {
       landingHeading !== null ? homeTranslater() : null;
       location !== null ? pvFormTranslater() : null;
       document.querySelectorAll(".number") !== null ? loadTranslater() : null;
-      document.querySelector(".angle") !== null ? resultTranslater() : null;
+      document.querySelector(".pv-power") !== null ? resultTranslater() : null;
       document.querySelector(".choose-1") !== null ? exempleTranslater() : null;
       document.querySelector(".pv-m-number") !== null
         ? calculTranslater()
@@ -62,7 +61,6 @@ export const homeTranslater = () => {
     aboutBtn.innerText = text.fr["about-btn"];
     aboutHeading.innerText = text.fr["about-heading"];
     aboutText.innerText = text.fr["about-text"];
-    sizingBtn.innerText = text.fr["start-btn"];
     codeBtn.innerText = text.fr["code-btn"];
     made.innerText = text.fr["made"];
     copy.innerHTML = text.fr["copy"];
@@ -73,7 +71,6 @@ export const homeTranslater = () => {
     aboutBtn.innerText = text.en["about-btn"];
     aboutHeading.innerText = text.en["about-heading"];
     aboutText.innerText = text.en["about-text"];
-    sizingBtn.innerText = text.en["start-btn"];
     codeBtn.innerText = text.en["code-btn"];
     made.innerText = text.en["made"];
     copy.innerHTML = text.en["copy"];
@@ -158,7 +155,7 @@ export const resultTranslater = () => {
     document.querySelector(".energy").innerText = text.en["energy"];
     document.querySelector(".d-power").innerText = text.en["d-power"];
     document.querySelector(".pv-power").innerText = text.en["pv-power"];
-    document.querySelector(".pv-battery").innerText = text.fr["pv-battery"];
+    document.querySelector(".pv-battery").innerText = text.en["pv-battery"];
   }
 };
 

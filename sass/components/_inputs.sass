@@ -1,0 +1,42 @@
+::placeholder
+    color: #046dc9 
+    transition: .5s
+
+input:not([type='radio'])
+    display: block
+    width: 100%
+    height: calc(1.5em + .75rem + 2px)
+    padding: .375rem .75rem
+    font-size: 1rem
+    font-weight: 400
+    line-height: 1.5
+    color: #495057
+    background-color: #fff
+    background-clip: padding-box
+    border: 1px solid #ced4da
+    border-radius: .25rem
+    background-color: $second-color 
+    border: none 
+    color: #ffffff 
+    outline: none
+    transition: .2s
+
+    &:focus
+        border: none
+        box-shadow: none
+        border-bottom: 2px solid $main-color
+
+        &::placeholder
+            opacity: 0
+
+    &[type=number]::-webkit-inner-spin-button, 
+    &[type=number]::-webkit-outer-spin-button 
+        -webkit-appearance: none
+        margin: 0
+
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus
+        transition: background-color 5000s ease-in-out 0s
+        background-color: $second-color
+        -webkit-text-fill-color: #ffffff

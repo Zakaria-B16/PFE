@@ -1,0 +1,72 @@
+.home-btn 
+    min-height: 40px
+    width: 100%
+    margin: 10px 0
+    border-radius: 7px
+    border: 2px solid $main-color
+    color: $main-color
+    font-size: 1rem
+    background-color: transparent
+    transition: .5s
+    text-transform: uppercase
+
+    &:hover
+        background-color: #90fd02
+        color: #000a5e
+
+.go-top
+    position: fixed
+    z-index: 1
+    width: 50px
+    height: 50px
+    border-radius: 50%
+    background-color: $main-color
+    color: $first-color
+    display: flex
+    justify-content: center
+    align-items: center
+    font-size: 1.5rem
+    bottom: 65px
+    text-align: center
+    right: 2%
+    transition: .5s
+    box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034),0 6.7px 5.3px rgba(0, 0, 0, 0.048),0 12.5px 10px rgba(0, 0, 0, 0.06),0 22.3px 17.9px rgba(0, 0, 0, 0.072),0 41.8px 33.4px rgba(0, 0, 0, 0.086),0 100px 80px rgba(0, 0, 0, 0.12)
+
+    i 
+        color: $first-color
+
+    &:hover
+        outline: none
+        background-color: $first-color
+        text-decoration: none
+
+        i 
+            color: $main-color
+
+.btn 
+    background-color: none 
+    color: #ffffff !important
+
+.delete 
+    background-color: $nav-link-color
+    color: #ffffff !important
+    transition: .5s
+
+    &:hover, &:focus
+        background-color: lighten( $nav-link-color,10%)
+
+.submit
+    background-color: #0359da
+    color: #ffffff !important
+    transition: .5s
+
+    &:hover, &:focus
+        background-color: darken( #0359da,10%)
+
+.add
+    background-color: $main-color
+    color: #000000 !important
+    transition: .5s
+
+    &:hover, &:focus
+        background-color: darken( $main-color,10%)

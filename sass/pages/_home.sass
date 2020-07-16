@@ -1,0 +1,188 @@
+html 
+    scroll-behavior: smooth
+
+* 
+    margin: 0
+    box-sizing: border-box
+
+body 
+    position: relative
+    overflow-x: hidden
+    font-family: "Poppins",sans-serif  
+
+a 
+    color: $first-color
+    text-decoration: none
+    transition: .5s
+
+// Navbar
+nav 
+    position: relative
+    z-index: 2
+    width: 100%
+    background-color: $main-color
+    overflow-x: hidden
+
+    .container
+        width: 95%
+        color: $nav-link-color !important
+        min-height: 50px
+        padding: 5px 0
+        display: flex
+        justify-content: space-between
+        align-items: center
+    
+    h1 
+        margin: 0
+        color: $nav-link-color !important
+
+    i 
+        color: $nav-link-color !important
+
+    .language
+
+        .lang-list
+            margin: 0
+
+        li
+            font-weight: bold
+            display: inline
+            margin: 0 5px
+
+            button 
+                border: none 
+                border: 2px solid $nav-link-color
+                width: 35px
+                height: 35px
+                border-radius: 50%
+                background-color: $main-color 
+                transition: .5s 
+                color: $nav-link-color !important
+                text-align: center
+                outline: none
+
+                &:hover
+                    background-color: darken( $main-color,10%)
+
+                &.active
+                    background-color: $nav-link-color
+                    color: $main-color !important
+                    cursor: default
+                    pointer-events: none
+
+// landing Section
+#landing
+    position: relative
+    height: 100vh
+    width: 100vw
+    background-color: $first-color
+    background-image: url("../img/bg1.jpg")
+    background-attachment: fixed
+    background-size: cover
+    color: #ffffff
+
+    .overlay
+        position: absolute
+        top: 0
+        left: 0
+        height: 100%
+        width: 100%
+        z-index: 0
+        background-color: #010425cc
+
+    .intro
+        position: relative
+        z-index: 1
+        height: 100vh
+        display: flex
+        align-items: center
+        justify-content: center
+        flex-direction: column
+
+        h1 
+            color: $main-color
+            text-align: center
+            margin: 0
+            margin-bottom: 10px
+            font-size: 3rem
+
+        .landing-text 
+            width: 75%
+            text-align: center
+            font-size: 1.1rem
+            margin-bottom: 10px
+
+        .row
+            width: 80%
+            justify-content: space-evenly
+
+
+        a 
+            width: 100%
+            text-decoration: none
+            text-transform: uppercase
+            transition: .5s
+            color: $main-color
+            
+// About Section
+#about 
+    height: calc( 100vh - 58px )
+    width: 100vw
+    border-top: 10px solid $main-color
+    display: flex
+    align-items: center
+    justify-content: center
+    padding: 50px 0
+    color: #ffffff
+    background: $first-color
+    background: -webkit-linear-gradient(to top, #004e92, $first-color)
+    background: linear-gradient(to top, #004e92, $first-color)
+
+    @media screen and ( max-width:  992px)
+        height: 100%
+
+    .row
+        overflow: hidden
+        height: 100%
+        display: flex
+        flex: 1
+        justify-content: center
+        align-items: center
+        text-align: center
+
+    h1 
+        color: $main-color
+        margin-bottom: 15px
+        font-size: 50px
+
+    p 
+        text-align: justify
+        font-size: 1.1rem
+
+    .icon 
+        overflow: hidden
+        width: 100%
+        margin: 20px 0
+        border-radius: 7px
+
+        img 
+            width: 100%
+
+    .btns
+        position: relative
+        height: 100%
+        display: flex
+        flex: 1
+        justify-content: center
+        align-items: center
+        text-align: center
+        flex-direction: column
+
+    a 
+        width: 100%
+        text-decoration: none
+        text-transform: uppercase
+        transition: .5s
+        color: $main-color
+
+            

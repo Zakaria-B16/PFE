@@ -187,11 +187,11 @@ const PVSizer = async (e) => {
       // Output Charge
       document.getElementById("charge-power").innerHTML = chargeOutput;
 
-      // Translate
-      resultTranslater();
-
       // Output Sizing
       document.getElementById("sizing").innerHTML = sizingOutput;
+
+      // Translate
+      resultTranslater();
 
       // Scroll To Address After 3s
       setTimeout(() => {
