@@ -7,6 +7,8 @@ import {
 } from "./lang.js";
 //import { makePVSchema, makeBatterySchema } from "./schema.js";
 
+const sizer = document.getElementById("sizer");
+
 // Calculation Function
 export const startCalcul = async (dayInput, irradiation) => {
   let days = parseInt(dayInput.value);
@@ -222,7 +224,7 @@ export const installtionSizing = async (
   exempleTranslater();
 
   // Scroll To Exemple Form
-  exempleFrom.scrollIntoView({ block: "end", behavior: "smooth" });
+  sizer.scrollIntoView({ block: "end", behavior: "smooth" });
 
   // Get Elements
   const pvCheck = document.querySelectorAll(".pv-check");
@@ -366,7 +368,7 @@ const PVBatterySizing = (
       <strong
         ><i class="fas fa-wave-square"></i>
         <p class="ond">Inverter :</p> </strong
-      > <span>12V/${ondPower}W</span>
+      > <span>50Hz/12V/${ondPower}W</span>
     </li>
     </ul>
     <button id="cable-btn" class="btn submit btn-block mb-2 cable-btn">START CABLE SIZING</button>`;
@@ -384,9 +386,7 @@ const PVBatterySizing = (
     calculTranslater();
 
     // Scrolll To Regulator
-    document
-      .getElementById("regulator")
-      .scrollIntoView({ block: "end", behavior: "smooth" });
+    sizer.scrollIntoView({ block: "end", behavior: "smooth" });
 
     // Start Cable Sizing Function
     cableSizingFunction(
@@ -439,9 +439,8 @@ const cableSizingFunction = (
     cableTranslater();
 
     // Scroll To Render Form
-    document
-      .getElementById("cable-form")
-      .scrollIntoView({ block: "end", behavior: "smooth" });
+
+    sizer.scrollIntoView({ block: "end", behavior: "smooth" });
 
     document.getElementById("cable-form").addEventListener("submit", (e) => {
       e.preventDefault();
@@ -476,9 +475,7 @@ const cableSizingFunction = (
       pdfTranslater();
 
       // Scroll To Cable Section
-      document
-        .getElementById("cable")
-        .scrollIntoView({ block: "end", behavior: "smooth" });
+      sizer.scrollIntoView({ block: "end", behavior: "smooth" });
 
       // document
       //   .getElementById("schema-btn")
