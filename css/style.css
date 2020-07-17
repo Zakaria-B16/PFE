@@ -128,6 +128,10 @@ nav .language li button.active {
   color: #000428;
 }
 
+button:focus {
+  outline: none;
+}
+
 .home-btn {
   min-height: 40px;
   width: 100%;
