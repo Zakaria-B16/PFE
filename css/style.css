@@ -301,11 +301,23 @@ a {
   font-size: 3rem;
 }
 
+@media screen and (max-width: 576px) {
+  #landing .intro h1 {
+    font-size: 2rem;
+  }
+}
+
 #landing .intro .landing-text {
   width: 75%;
   text-align: center;
   font-size: 1.1rem;
   margin-bottom: 10px;
+}
+
+@media screen and (max-width: 576px) {
+  #landing .intro .landing-text {
+    font-size: 1rem;
+  }
 }
 
 #landing .intro .row {
@@ -371,12 +383,24 @@ a {
 #about h1 {
   color: #90fd02;
   margin-bottom: 15px;
-  font-size: 50px;
+  font-size: 3rem;
+}
+
+@media screen and (max-width: 576px) {
+  #about h1 {
+    font-size: 2rem;
+  }
 }
 
 #about p {
   text-align: justify;
   font-size: 1.1rem;
+}
+
+@media screen and (max-width: 576px) {
+  #about p {
+    font-size: 1rem;
+  }
 }
 
 #about .icon {

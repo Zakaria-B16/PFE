@@ -15,8 +15,6 @@ a
     text-decoration: none
     transition: .5s
 
-
-
 // landing Section
 #landing
     position: relative
@@ -53,11 +51,17 @@ a
             margin-bottom: 10px
             font-size: 3rem
 
+            @media screen and ( max-width: 576px )
+                font-size: 2rem
+
         .landing-text 
             width: 75%
             text-align: center
             font-size: 1.1rem
             margin-bottom: 10px
+
+            @media screen and ( max-width: 576px )
+                font-size: 1rem
 
         .row
             width: 80%
@@ -100,11 +104,17 @@ a
     h1 
         color: $main-color
         margin-bottom: 15px
-        font-size: 50px
+        font-size: 3rem
+
+        @media screen and ( max-width: 576px )
+            font-size: 2rem
 
     p 
         text-align: justify
         font-size: 1.1rem
+
+        @media screen and ( max-width: 576px )
+            font-size: 1rem
 
     .icon 
         overflow: hidden
