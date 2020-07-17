@@ -1,5 +1,7 @@
 import { text } from "./text.js";
 
+localStorage.getItem("language");
+
 // Select DOM Elements
 const landingHeading = document.querySelector(".landing-heading");
 const landingText = document.querySelector(".landing-text");
@@ -17,8 +19,38 @@ const del = document.querySelector(".delete");
 const submit = document.querySelector(".submit");
 const langBtn = document.querySelectorAll(".lang-list button");
 
+// Set Localstorage
+let language = localStorage.getItem("language");
+
 // Declare Varibales
-var lang;
+var lang = language;
+
+// Get Langage From localstorage
+const localStorageLang = () => {
+  if (language !== null) {
+    langBtn.forEach((element) => {
+      element.classList.remove("active");
+
+      if (element.dataset.lang === language) {
+        element.classList.add("active");
+      }
+      landingHeading !== null ? homeTranslater() : null;
+      location !== null ? pvFormTranslater() : null;
+      document.querySelectorAll(".number") !== null ? loadTranslater() : null;
+      document.querySelector(".pv-power") !== null ? resultTranslater() : null;
+      document.querySelector(".choose-1") !== null ? exempleTranslater() : null;
+      document.querySelector(".pv-m-number") !== null
+        ? calculTranslater()
+        : null;
+      document.querySelector(".cable-length") !== null
+        ? cableTranslater()
+        : null;
+      document.querySelector(".cable-section") !== null
+        ? pdfTranslater()
+        : null;
+    });
+  }
+};
 
 // Choose Langage Function
 const chooseLang = () => {
@@ -30,6 +62,7 @@ const chooseLang = () => {
       e.target.classList.add("active");
 
       lang = e.target.dataset.lang;
+      localStorage.setItem("language", lang);
 
       landingHeading !== null ? homeTranslater() : null;
       location !== null ? pvFormTranslater() : null;
@@ -222,3 +255,4 @@ export const pdfTranslater = () => {
     document.querySelector(".pdf-btn").innerText = text.en["pdf-btn"];
   }
 };
+document.onload = localStorageLang();
