@@ -70,7 +70,7 @@ nav .language li button {
   border: 2px solid #000a5e;
   width: 35px;
   height: 35px;
-  margin-bottom: 2px;
+  margin: 1px;
   border-radius: 50%;
   background-color: #90fd02;
   -webkit-transition: .5s;
