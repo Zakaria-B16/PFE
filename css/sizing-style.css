@@ -15,6 +15,7 @@ nav .container {
 
 nav .row {
   height: 100%;
+  margin: 0;
   padding: 5px 0;
   -webkit-box-align: center;
       -ms-flex-align: center;
@@ -54,10 +55,14 @@ nav i {
   color: #000a5e !important;
 }
 
+nav .language ul {
+  margin: 0;
+}
+
 nav .language li {
   font-weight: bold;
   display: inline;
-  margin: 0 5px;
+  margin: 3px;
 }
 
 nav .language li button {
@@ -65,6 +70,7 @@ nav .language li button {
   border: 2px solid #000a5e;
   width: 35px;
   height: 35px;
+  margin-bottom: 2px;
   border-radius: 50%;
   background-color: #90fd02;
   -webkit-transition: .5s;
@@ -82,6 +88,14 @@ nav .language li button.active {
   background-color: #000a5e;
   color: #90fd02 !important;
   cursor: default;
+}
+
+@media screen and (max-width: 576px) {
+  .home, .language {
+    -webkit-box-ordinal-group: 2 !important;
+        -ms-flex-order: 1 !important;
+            order: 1 !important;
+  }
 }
 
 #footer {

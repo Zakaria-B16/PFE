@@ -15,6 +15,7 @@ nav .container {
 
 nav .row {
   height: 100%;
+  margin: 0;
   padding: 5px 0;
   -webkit-box-align: center;
       -ms-flex-align: center;
@@ -54,10 +55,14 @@ nav i {
   color: #000a5e !important;
 }
 
+nav .language ul {
+  margin: 0;
+}
+
 nav .language li {
   font-weight: bold;
   display: inline;
-  margin: 0 5px;
+  margin: 3px;
 }
 
 nav .language li button {
@@ -65,6 +70,7 @@ nav .language li button {
   border: 2px solid #000a5e;
   width: 35px;
   height: 35px;
+  margin-bottom: 2px;
   border-radius: 50%;
   background-color: #90fd02;
   -webkit-transition: .5s;
@@ -82,6 +88,14 @@ nav .language li button.active {
   background-color: #000a5e;
   color: #90fd02 !important;
   cursor: default;
+}
+
+@media screen and (max-width: 576px) {
+  .home, .language {
+    -webkit-box-ordinal-group: 2 !important;
+        -ms-flex-order: 1 !important;
+            order: 1 !important;
+  }
 }
 
 #footer {
@@ -233,74 +247,6 @@ a {
   text-decoration: none;
   -webkit-transition: .5s;
   transition: .5s;
-}
-
-nav {
-  position: relative;
-  z-index: 2;
-  width: 100%;
-  background-color: #90fd02;
-  overflow-x: hidden;
-}
-
-nav .container {
-  width: 95%;
-  color: #000a5e !important;
-  min-height: 50px;
-  padding: 5px 0;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-nav h1 {
-  margin: 0;
-  color: #000a5e !important;
-}
-
-nav i {
-  color: #000a5e !important;
-}
-
-nav .language .lang-list {
-  margin: 0;
-}
-
-nav .language li {
-  font-weight: bold;
-  display: inline;
-  margin: 0 5px;
-}
-
-nav .language li button {
-  border: none;
-  border: 2px solid #000a5e;
-  width: 35px;
-  height: 35px;
-  border-radius: 50%;
-  background-color: #90fd02;
-  -webkit-transition: .5s;
-  transition: .5s;
-  color: #000a5e !important;
-  text-align: center;
-  outline: none;
-}
-
-nav .language li button:hover {
-  background-color: #73ca02;
-}
-
-nav .language li button.active {
-  background-color: #000a5e;
-  color: #90fd02 !important;
-  cursor: default;
-  pointer-events: none;
 }
 
 #landing {
