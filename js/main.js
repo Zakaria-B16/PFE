@@ -124,7 +124,7 @@ const PVSizer = async (e) => {
         <strong
           ><i class="fa fa-compass" aria-hidden="true"></i>
           <p class="orientation">Orientation :</p> </strong
-        ><span>${orientation}</span>
+        ><span class="orientation-result">${orientation}</span>
       </li>
     </ul>`;
 
@@ -150,13 +150,13 @@ const PVSizer = async (e) => {
         <strong
           ><i class="fa fa-bolt" aria-hidden="true"></i>
           <p class="energy">Daily Energy Consomation :</p> </strong
-        ><span>${sum} Wh/Day</span>
+        ><span>${sum} Wh/<span class="day-output">Day</span></span>
       </li>
       <li class="list-group-item">
         <strong
           ><i class="fas fa-plug" aria-hidden="true"></i>
           <p class="d-power">Daily Power Consomation :</p> </strong
-        ><span>${totalPower} W/Day</span>
+        ><span>${totalPower} W/<span class="day-output">Day</span></span>
       </li>
     </ul>`;
 

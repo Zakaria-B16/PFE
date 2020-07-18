@@ -176,8 +176,21 @@ export const resultTranslater = () => {
       text.fr["second-irradiance"];
     document.querySelector(".energy").innerText = text.fr["energy"];
     document.querySelector(".d-power").innerText = text.fr["d-power"];
+    document.querySelectorAll(".day-output").forEach((element) => {
+      element.innerText = text.fr["day-output"];
+    });
     document.querySelector(".pv-power").innerText = text.fr["pv-power"];
     document.querySelector(".pv-battery").innerText = text.fr["pv-battery"];
+
+    if (document.querySelector(".orientation-result").innerText === "South") {
+      document.querySelector(".orientation-result").innerText =
+        text.fr["orientation-result-south"];
+    } else if (
+      document.querySelector(".orientation-result").innerText === "North"
+    ) {
+      document.querySelector(".orientation-result").innerText =
+        text.fr["orientation-result-north"];
+    }
   } else {
     document.querySelector(".angle").innerText = text.en["angle"];
     document.querySelector(".orientation").innerText = text.en["orientation"];
@@ -187,8 +200,21 @@ export const resultTranslater = () => {
       text.en["second-irradiance"];
     document.querySelector(".energy").innerText = text.en["energy"];
     document.querySelector(".d-power").innerText = text.en["d-power"];
+    document.querySelectorAll(".day-output").forEach((element) => {
+      element.innerText = text.en["day-output"];
+    });
     document.querySelector(".pv-power").innerText = text.en["pv-power"];
     document.querySelector(".pv-battery").innerText = text.en["pv-battery"];
+
+    if (document.querySelector(".orientation-result").innerText === "Sud") {
+      document.querySelector(".orientation-result").innerText =
+        text.en["orientation-result-south"];
+    } else if (
+      document.querySelector(".orientation-result").innerText === "Nord"
+    ) {
+      document.querySelector(".orientation-result").innerText =
+        text.en["orientation-result-north"];
+    }
   }
 };
 

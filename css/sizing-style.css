@@ -532,6 +532,7 @@ body {
 
 #pdf {
   margin: 100px 20px;
+  background-image: url("../img/bg1.png");
 }
 
 #pdf * {
