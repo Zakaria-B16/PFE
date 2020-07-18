@@ -248,6 +248,11 @@ button:focus {
           animation: vanish 1s forwards;
 }
 
+#loader.move {
+  -webkit-animation: go 1s forwards;
+          animation: go 1s forwards;
+}
+
 #loader .loading-container {
   position: relative;
   z-index: 4;
@@ -359,6 +364,24 @@ button:focus {
   100% {
     opacity: 0;
     visibility: hidden;
+  }
+}
+
+@-webkit-keyframes go {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes go {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }
 

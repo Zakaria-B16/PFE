@@ -26,7 +26,14 @@ let language = localStorage.getItem("language");
 // Declare Varibales
 var lang = language;
 
-loader.onload = loader.classList.add("remove");
+window.addEventListener("load", () => {
+  loader.classList.add("remove");
+});
+
+window.addEventListener("beforeunload", () => {
+  loader.classList.remove("remove");
+  loader.classList.add("move");
+});
 
 // Get Langage From localstorage
 const localStorageLang = () => {

@@ -13,6 +13,9 @@
     &.remove
         animation: vanish 1s forwards
 
+    &.move
+        animation: go 1s forwards
+
     .loading-container
         position: relative
         z-index: 4
@@ -74,3 +77,11 @@
     100%
         opacity: 0
         visibility: hidden
+
+@keyframes go
+    0%
+        opacity: 0
+
+    100%
+        opacity: 1
+    
