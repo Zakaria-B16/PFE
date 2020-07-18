@@ -18,12 +18,15 @@ const add = document.querySelector(".add");
 const del = document.querySelector(".delete");
 const submit = document.querySelector(".submit");
 const langBtn = document.querySelectorAll(".lang-list button");
+const loader = document.getElementById("loader");
 
 // Set Localstorage
 let language = localStorage.getItem("language");
 
 // Declare Varibales
 var lang = language;
+
+loader.onload = loader.classList.add("remove");
 
 // Get Langage From localstorage
 const localStorageLang = () => {
