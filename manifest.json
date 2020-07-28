@@ -1,0 +1,15 @@
+{
+  "name": "PV Sizer",
+  "short_name": "PV Sizer",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#000a5e",
+  "description": "A Web App For Sizing the PV installations",
+  "icons": [
+    {
+      "src": "img/favicon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
