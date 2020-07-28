@@ -115,15 +115,29 @@ body
 
 // PDF Section
 #pdf
+    position: relative
     margin: 100px 20px
-    background-image: url("../img/bg1.png")
 
     *
-        background-color: #ffffff !important
+        opacity: .5s
+        background-color: transparent !important
         color: #000000 !important
+        background-image: url("../img/bg1.png") !important
+        background-attachment: fixed !important
 
     h3 
         margin-bottom: 25px
+
+    .bg
+        position: absolute
+        z-index: 2
+        opacity: .2
+        left: 50%
+        top: 50%
+        transform: translate(-50%,-50%)
+        display: flex
+        justify-content: center
+        align-items: center
 
 #schema-pv, #schema-battery 
     --rows: 1

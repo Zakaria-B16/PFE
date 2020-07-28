@@ -31,6 +31,10 @@ export const generatePDF = (ondPower, cableSection) => {
   </li>
   </ul>`;
 
+  let bg = `<div class="bg">
+  <img src="img/favicon.png" alt="">
+  </div>`;
+
   const element = `<div id="pdf">
   <div class="container">
   ${
@@ -42,7 +46,8 @@ export const generatePDF = (ondPower, cableSection) => {
     pvNumber +
     batteryNumber +
     regulatorOutput +
-    cableOutput
+    cableOutput +
+    bg
   }
   </div>
 </div>`;
