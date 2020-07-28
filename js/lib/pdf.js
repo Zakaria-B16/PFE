@@ -35,6 +35,8 @@ export const generatePDF = (ondPower, cableSection) => {
   <img src="img/favicon.png" alt="">
   </div>`;
 
+  let pub = `<h4>PV Sizer <span>www.zakaria-b16.github.io/PFE/</span></h4>`;
+
   const element = `<div id="pdf">
   <div class="container">
   ${
@@ -47,7 +49,8 @@ export const generatePDF = (ondPower, cableSection) => {
     batteryNumber +
     regulatorOutput +
     cableOutput +
-    bg
+    bg +
+    pub
   }
   </div>
 </div>`;
