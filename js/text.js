@@ -47,7 +47,7 @@ export const text = {
   },
   fr: {
     "landing-heading": "Bienvenue à PV Sizer",
-    "landing-text": `Le dimensionnement correct d'une installation est une étape essentielle à maîtriser, pour cela, nous avons créé une application web pour réaliser un dimensionnement de système PV en insérant votre emplacement et les charges souhaitées et vous, facile à utiliser avec des résultats précis`,
+    "landing-text": `Le dimensionnement correct d'une installation est une étape essentielle à maîtriser, pour cela, nous avons créé une application web pour réaliser le dimensionnement d'un système PV en insérant votre emplacement et les charges souhaitées, facile à utiliser avec des résultats précis`,
     "start-btn": `Commencer Le Dimensionnement`,
     "about-btn": `A Propos De Notre Travail`,
     "about-heading": "Notre Travail",
