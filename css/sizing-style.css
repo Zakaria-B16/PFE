@@ -596,10 +596,8 @@ body {
 
 #exemple .input-group-text input {
   margin-left: 20px;
-}
-
-#exemple .input-group-text label {
-  margin-bottom: 0;
+  width: 15px;
+  height: 15px;
 }
 
 .alert-danger {
