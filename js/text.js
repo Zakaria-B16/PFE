@@ -5,7 +5,7 @@ export const text = {
     "start-btn": `Start Sizing`,
     "about-btn": `About Our Work`,
     "about-heading": "Our Work",
-    "about-text": `Our work consists in realizing an interface for the dimensioning of the autonomous photovoltaic installations in any place in the world, we used HTML as a rendering language and JavaScript to receive and manage the data and do the calculations. The customer must enter the location where he wants to install perform his installation, the number of days of autonomy and its charges with their powers, the time of daily use. Then we used an API (Application Programming Interface) to retrieve the latitude and longitude of the place entered with which we will have the daily global sunshine from another API also specialized in this field.`,
+    "about-text": `It consists in realizing an interface for the dimensioning of the autonomous photovoltaic installations in any place in the world, we used HTML as a rendering language and JavaScript to receive and manage the data and do the calculations. The person should enter the specific location where he wants to realise his installation, the number of days of autonomy and his charges with their powers and the time of their daily use Then we used an API (Application Programming Interface) to retrieve the latitude and longitude of the entered location which we will use with another API also specialized in this field to get the daily global sunshine.`,
     "code-btn": "See The Code",
     made: "Made By Zakaria BOURENANE & Yanis BENMEZIANE",
     copy: `ALL RIGHTS RESERVED 2020 <i class="fa fa-copyright" aria-hidden="true"></i>`,
@@ -24,7 +24,6 @@ export const text = {
     "orientation-result-south": "South",
     "orientation-result-north": "North",
     "first-irradiance": "Solar Irradiance On The ",
-    "second-irradiance": "Solar Irradiance On The ",
     energy: "Daily Energy Consomation :",
     "d-power": "Daily Power Consomation :",
     "day-output": "Day",
@@ -52,7 +51,7 @@ export const text = {
     "start-btn": `Commencer Le Dimensionnement`,
     "about-btn": `A Propos De Notre Travail`,
     "about-heading": "Notre Travail",
-    "about-text": `Notre travail consiste à réaliser une interface pour le dimensionnement des installations photovoltaïque autonomes dans n'importe quel lieu au monde, on a utilisé le HTML comme langage de rendu et le JavaScript pour recevoir et gérer les données et faire les calculs.
+    "about-text": `Ça consiste à réaliser une interface pour le dimensionnement des installations photovoltaïque autonomes dans n'importe quel lieu au monde, on a utilisé le HTML comme langage de rendu et le JavaScript pour recevoir et gérer les données et faire les calculs.
     Le client doit introduire la localisation où il veut installer réaliser son installation, le nombre de jours d’autonomie et ses charges avec leurs puissances, le temps d’utilisation journalière.
     Après on a utilisé un API (Application Programming Interface) pour récupérer la latitude et la longitude du lieu introduit avec lesquelles on aura l’ensoleillement global journalier de la part d’un autre API aussi spécialisé dans ce domaine.`,
     "code-btn": "Voir Le Code",
@@ -73,7 +72,6 @@ export const text = {
     "orientation-result-south": "Sud",
     "orientation-result-north": "Nord",
     "first-irradiance": "Irradiation Solaire Le ",
-    "second-irradiance": "Irradiation Solaire Le ",
     energy: "Energie Consomée Dans une journée :",
     "d-power": "Puissance Consomée Dans une journée :",
     "day-output": "Jour",

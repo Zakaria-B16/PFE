@@ -182,8 +182,7 @@ export const resultTranslater = () => {
     document.querySelector(".orientation").innerText = text.fr["orientation"];
     document.querySelector(".first-irradiance").innerText =
       text.fr["first-irradiance"];
-    document.querySelector(".second-irradiance").innerText =
-      text.fr["second-irradiance"];
+
     document.querySelector(".energy").innerText = text.fr["energy"];
     document.querySelector(".d-power").innerText = text.fr["d-power"];
     document.querySelectorAll(".day-output").forEach((element) => {
@@ -206,8 +205,7 @@ export const resultTranslater = () => {
     document.querySelector(".orientation").innerText = text.en["orientation"];
     document.querySelector(".first-irradiance").innerText =
       text.en["first-irradiance"];
-    document.querySelector(".second-irradiance").innerText =
-      text.en["second-irradiance"];
+
     document.querySelector(".energy").innerText = text.en["energy"];
     document.querySelector(".d-power").innerText = text.en["d-power"];
     document.querySelectorAll(".day-output").forEach((element) => {

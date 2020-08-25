@@ -98,7 +98,6 @@ const PVSizer = async (e) => {
 
       // Get Data From Solar Irradiation Function
       const firstIrradiation = await SolarIrradiation(day1, day2, lat, lng);
-      const secondIrradiation = await SolarIrradiation(day3, day4, lat, lng);
 
       // Get Data From Caculation Function
       const [sum, totalPower, pvPower, voltage, battery] = await startCalcul(
@@ -136,12 +135,7 @@ const PVSizer = async (e) => {
           <p class="first-irradiance">Solar Irradiance On The </p><p class="day-variable">${day1} :</p> </strong
         ><span>${firstIrradiation} Wh/m^2</span>
       </li>
-      <li class="list-group-item">
-        <strong
-          ><i class="far fa-sun" aria-hidden="true"></i>
-          <p class="second-irradiance">Solar Irradiance On The </p><p class="day-variable">${day3} :</p> </strong
-        ><span>${secondIrradiation} Wh/m^2</span>
-      </li>
+      
     </ul>`;
 
       // Render Daily Consomation PV Power & Battery Capacity
