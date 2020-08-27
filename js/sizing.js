@@ -1,4 +1,4 @@
-import { geocode, SolarIrradiation } from "./API.js";
+import { geocode, SolarIrradiation, reverseGeo } from "./API.js";
 import { startCalcul, installtionSizing } from "./calculs.js";
 import { loads, ErrorPopup } from "./component.js";
 import { mapboxFunction } from "./mapbox.js";
@@ -9,14 +9,30 @@ const form = document.getElementById("pv-form");
 const locationInput = document.getElementById("location-input");
 const dayInput = document.getElementById("number-day-input");
 const exempleFrom = document.getElementById("exemple");
+const gps = document.querySelector(".gps");
 
 // Declare Variables
 let day1;
 let day2;
-let day3;
-let day4;
 let orientation;
 let location;
+
+// Get Position With GPS
+gps.addEventListener("click", async () => {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(async (position) => {
+      console.log(position.coords);
+
+      let latitude = position.coords.latitude;
+      let longititude = position.coords.longitude;
+      location = await reverseGeo(latitude, longititude);
+      locationInput.value = location;
+      mapboxFunction(latitude, longititude);
+    });
+  } else {
+    console.error("Geolocation is not supported by this browser!");
+  }
+});
 
 // Add Submit Event For FOrm
 form.addEventListener("submit", (e) => PVSizer(e));
@@ -83,15 +99,11 @@ const PVSizer = async (e) => {
       if (lat > 0) {
         day1 = "2019-12-21";
         day2 = "2019-12-22";
-        day3 = "2019-06-21";
-        day4 = "2019-06-22";
 
         orientation = "South";
       } else {
         day1 = "2019-06-21";
         day2 = "2019-06-22";
-        day3 = "2019-12-21";
-        day4 = "2019-12-22";
 
         orientation = "North";
       }

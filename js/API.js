@@ -30,10 +30,31 @@ export const geocode = async (location) => {
     } else {
       angle = 80;
     }
+    console.log(response);
     return [lat, lng, addressName, angle];
   } catch (error) {
     console.error(error);
   }
+};
+
+// Reverse Geocoding Function
+export const reverseGeo = async (lat, lon) => {
+  try {
+    const reponse = await axios.get(
+      "https://us1.locationiq.com/v1/reverse.php",
+      {
+        params: {
+          lat: lat,
+          lon: lon,
+          key: "18c74e41edef57",
+          format: "json",
+        },
+      }
+    );
+    let nameArray = reponse.data.display_name.trim().split(",");
+
+    return nameArray[1].toString();
+  } catch (error) {}
 };
 
 // Solar Irradiation Function

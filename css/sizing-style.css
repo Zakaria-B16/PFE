@@ -310,6 +310,42 @@ button:focus {
   background-color: #73ca02;
 }
 
+.location-field {
+  position: relative;
+}
+
+.gps {
+  position: absolute;
+  bottom: 4px;
+  right: 18px;
+  border: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  justify-items: center;
+  background-color: transparent !important;
+}
+
+.gps p {
+  position: relative;
+  bottom: -4px;
+  margin-right: 5px;
+}
+
+.gps i {
+  font-size: 26px;
+  -webkit-transition: .5s;
+  transition: .5s;
+}
+
+.gps:hover i {
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+}
+
 #loader {
   position: absolute;
   width: 100vw;

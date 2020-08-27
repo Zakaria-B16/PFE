@@ -44,6 +44,7 @@ export const text = {
     "size-cable": "CABLE SIZING",
     "cable-section": "Cable Section :",
     "pdf-btn": "GENERATE RESULTS AS A PDF FILE",
+    error: "Please add at least one charge",
   },
   fr: {
     "landing-heading": "Bienvenue à PV Sizer",
@@ -92,5 +93,6 @@ export const text = {
     "size-cable": "DIMENSIONNEMENT DES CABLES",
     "cable-section": "Section De Cable :",
     "pdf-btn": "GENERER LES RESULTATS COMME FICHER PDF",
+    error: "Veuillez introduire au moins une charge",
   },
 };

@@ -1,4 +1,4 @@
-import { loadTranslater } from "./lang.js";
+import { loadTranslater, errorTrans } from "./lang.js";
 export const loads = document.querySelector(".loads");
 const add = document.querySelector(".add");
 const del = document.querySelector(".delete");
@@ -71,8 +71,9 @@ export const ErrorPopup = (form) => {
     let popup = document.createElement("div");
     popup.classList = "popup";
     // Render Popup
+    let message = errorTrans();
     popup.innerHTML = `<div class="alert alert-danger alert-dismissible fade show" role="alert">
-  Please add at least one charge
+  ${message}
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>

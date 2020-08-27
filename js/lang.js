@@ -5,7 +5,7 @@ localStorage.getItem("language");
 // Select DOM Elements
 const landingHeading = document.querySelector(".landing-heading");
 const landingText = document.querySelector(".landing-text");
-const startBtn = document.querySelector(".start-btn");
+const startBtn = document.querySelectorAll(".start-btn");
 const aboutBtn = document.querySelector(".about-btn");
 const aboutHeading = document.querySelector(".about-heading");
 const aboutText = document.querySelector(".about-text");
@@ -46,6 +46,7 @@ const localStorageLang = () => {
       }
       landingHeading !== null ? homeTranslater() : null;
       location !== null ? pvFormTranslater() : null;
+      document.querySelector("popup") !== null ? errorTrans() : null;
       document.querySelectorAll(".number") !== null ? loadTranslater() : null;
       document.querySelector(".pv-power") !== null ? resultTranslater() : null;
       document.querySelector(".choose-1") !== null ? exempleTranslater() : null;
@@ -76,6 +77,7 @@ const chooseLang = () => {
 
       landingHeading !== null ? homeTranslater() : null;
       location !== null ? pvFormTranslater() : null;
+      document.querySelector("popup") !== null ? errorTrans() : null;
       document.querySelectorAll(".number") !== null ? loadTranslater() : null;
       document.querySelector(".pv-power") !== null ? resultTranslater() : null;
       document.querySelector(".choose-1") !== null ? exempleTranslater() : null;
@@ -88,19 +90,21 @@ const chooseLang = () => {
       document.querySelector(".cable-section") !== null
         ? pdfTranslater()
         : null;
-      console.clear();
     });
   });
 };
 
 chooseLang();
+document.querySelector("alert") !== null ? errorTrans() : null;
 
 // Home Page Translate Function
 export const homeTranslater = () => {
   if (lang === "fr") {
     landingHeading.innerText = text.fr["landing-heading"];
     landingText.innerText = text.fr["landing-text"];
-    startBtn.innerText = text.fr["start-btn"];
+    startBtn.forEach((btn) => {
+      btn.innerText = text.fr["start-btn"];
+    });
     aboutBtn.innerText = text.fr["about-btn"];
     aboutHeading.innerText = text.fr["about-heading"];
     aboutText.innerText = text.fr["about-text"];
@@ -147,6 +151,16 @@ const pvFormTranslater = () => {
     add.innerText = text.en["add"];
     del.innerText = text.en["del"];
     submit.innerText = text.en["submit"];
+  }
+};
+
+export const errorTrans = () => {
+  if (lang === "fr") {
+    let message = text.fr["error"];
+    return message;
+  } else {
+    let message = text.en["error"];
+    return message;
   }
 };
 

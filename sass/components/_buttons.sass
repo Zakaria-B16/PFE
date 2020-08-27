@@ -73,3 +73,32 @@ button:focus
 
     &:hover, &:focus
         background-color: darken( $main-color,10%)
+
+.location-field
+    position: relative
+
+.gps 
+    position: absolute
+    bottom: 4px
+    right: 18px
+    border: none
+    display: flex
+    justify-content: center
+    justify-items: center
+    background-color: transparent !important
+    
+
+    p
+        position: relative
+        bottom: -4px
+        margin-right: 5px
+
+
+    i 
+        font-size: 26px
+        transition: .5s
+
+    &:hover
+        i
+            transform: scale(1.2)
+        
