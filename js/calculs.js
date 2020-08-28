@@ -323,7 +323,7 @@ const PVBatterySizing = (
     <li class="list-group-item">
       <strong
         ><i class="fas fa-align-justify"></i>
-        <p class="pv-m-number">PV Module Number :</p> </strong
+        <p class="pv-m-number">PV Module Number </p>(${selectedPv}w/12V) :</strong
       > <span>${pvNumber}</span>
     </li>
     <li class="list-group-item">
@@ -345,7 +345,7 @@ const PVBatterySizing = (
     <li class="list-group-item">
       <strong
         ><i class="fas fa-battery-full"></i>
-        <p class="b-number">Battery Number :</p> </strong
+        <p class="b-number">Battery Number</p>(12V/${selectedBattery}Ah) :</strong
       > <span>${batteryNumber}</span>
     </li>
     <li class="list-group-item">
