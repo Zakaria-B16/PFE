@@ -459,7 +459,7 @@ const cableSizingFunction = (
             <li class="list-group-item">
               <strong
                 ><i class="far fa-dot-circle"></i>
-                <p class="cable-section">Cable Section :</p> </strong
+                <p class="cable-section">Cable Section </p>(${l}m) :</strong
               > <span>${cableSection}mm^2</span>
             </li>
             </ul>
