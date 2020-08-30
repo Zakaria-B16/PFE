@@ -304,3 +304,18 @@ export const pdfTranslater = () => {
   }
 };
 document.onload = localStorageLang();
+
+export const finalTranslater = () => {
+  let ond;
+  let sec;
+  if (lang === "fr") {
+    ond = document.querySelector(".ond-pdf").innerText = text.fr["ond"];
+    sec = document.querySelector(".cable-section-pdf").innerText =
+      text.fr["cable-section"];
+  } else {
+    ond = document.querySelector(".ond-pdf").innerText = text.en["ond"];
+    sec = document.querySelector(".cable-section-pdf").innerText =
+      text.en["cable-section"];
+  }
+  return [ond, sec];
+};

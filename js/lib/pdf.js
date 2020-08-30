@@ -1,4 +1,6 @@
-export const generatePDF = (ondPower, cableSection) => {
+import { finalTranslater } from "../lang.js";
+
+export const generatePDF = (ondPower, cableSection, l) => {
   const address = document.getElementById("address").innerHTML;
   const geocode = document.getElementById("geocode").innerHTML;
   const solar = document.getElementById("solar-irradiation").innerHTML;
@@ -6,29 +8,23 @@ export const generatePDF = (ondPower, cableSection) => {
   const sizing = document.getElementById("sizing").innerHTML;
   const pvNumber = document.getElementById("pv-number").innerHTML;
   const batteryNumber = document.getElementById("battery-number").innerHTML;
+  const enventer = document.querySelector(".enventer").innerHTML;
+  const section = document.querySelector(".section").innerHTML;
   const regulator = document.getElementById("regulator");
   const cable = document.getElementById("cable");
 
   let regulatorOutput = regulator.innerHTML;
 
-  regulatorOutput = `<ul class="list-group">
-  <li class="list-group-item">
-    <strong
-      ><i class="fas fa-wave-square"></i>
-      <p>Inverter :</p> </strong
-    > 12V/${ondPower}W
-  </li>
-  </ul>`;
+  regulatorOutput = `<div class="card-block">
+  <ul class="list-group">
+  <li class="list-group-item">${enventer}</li>
+  </ul>
+  </div>`;
 
   let cableOutput = cable.innerHTML;
 
   cableOutput = `<ul class="list-group">
-  <li class="list-group-item">
-    <strong
-      ><i class="far fa-dot-circle"></i>
-      <p>Cable Section :</p> </strong
-    > ${cableSection}mm^2
-  </li>
+  <li class="list-group-item">${section}</li>
   </ul>`;
 
   let bg = `<div class="bg">
@@ -54,7 +50,7 @@ export const generatePDF = (ondPower, cableSection) => {
   }
   </div>
 </div>`;
-
+  // finalTranslater();
   // Choose the element and save the PDF for our user.
   html2pdf().from(element).save("Sizing-Result");
 };

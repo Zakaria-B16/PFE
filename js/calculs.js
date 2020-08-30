@@ -364,7 +364,7 @@ const PVBatterySizing = (
 
     // Render Inventer
     let ondOutput = `<ul class="list-group mb-2">
-    <li class="list-group-item">
+    <li class="list-group-item enventer">
       <strong
         ><i class="fas fa-wave-square"></i>
         <p class="ond">Inverter :</p> </strong
@@ -456,7 +456,7 @@ const cableSizingFunction = (
 
       // Render Cable Section
       let cableOUtput = `<ul class="list-group mb-2">
-            <li class="list-group-item">
+            <li class="list-group-item section">
               <strong
                 ><i class="far fa-dot-circle"></i>
                 <p class="cable-section">Cable Section </p>(${l}m) :</strong
@@ -486,7 +486,9 @@ const cableSizingFunction = (
       //   );
       document
         .getElementById("PDF-btn")
-        .addEventListener("click", () => generatePDF(ondPower, cableSection));
+        .addEventListener("click", () =>
+          generatePDF(ondPower, cableSection, l)
+        );
     });
   };
 };

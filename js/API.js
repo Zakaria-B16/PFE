@@ -30,7 +30,7 @@ export const geocode = async (location) => {
     } else {
       angle = 80;
     }
-    console.log(response);
+
     return [lat, lng, addressName, angle];
   } catch (error) {
     console.error(error);
@@ -54,7 +54,9 @@ export const reverseGeo = async (lat, lon) => {
     let nameArray = reponse.data.display_name.trim().split(",");
 
     return nameArray[1].toString();
-  } catch (error) {}
+  } catch (error) {
+    console.error(error);
+  }
 };
 
 // Solar Irradiation Function
