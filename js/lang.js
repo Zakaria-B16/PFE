@@ -114,7 +114,9 @@ export const homeTranslater = () => {
   } else {
     landingHeading.innerText = text.en["landing-heading"];
     landingText.innerText = text.en["landing-text"];
-    startBtn.innerText = text.en["start-btn"];
+    startBtn.forEach((btn) => {
+      btn.innerText = text.en["start-btn"];
+    });
     aboutBtn.innerText = text.en["about-btn"];
     aboutHeading.innerText = text.en["about-heading"];
     aboutText.innerText = text.en["about-text"];
