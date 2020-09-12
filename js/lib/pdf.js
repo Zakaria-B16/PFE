@@ -1,6 +1,4 @@
-import { finalTranslater } from "../lang.js";
-
-export const generatePDF = (ondPower, cableSection, l) => {
+export const generatePDF = () => {
   const address = document.getElementById("address").innerHTML;
   const geocode = document.getElementById("geocode").innerHTML;
   const solar = document.getElementById("solar-irradiation").innerHTML;

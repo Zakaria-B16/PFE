@@ -90,6 +90,7 @@ const chooseLang = () => {
       document.querySelector(".cable-section") !== null
         ? pdfTranslater()
         : null;
+      languageFunction();
     });
   });
 };
@@ -320,4 +321,12 @@ export const finalTranslater = () => {
       text.en["cable-section"];
   }
   return [ond, sec];
+};
+
+export const languageFunction = () => {
+  if (lang === "fr") {
+    return lang;
+  } else {
+    return lang;
+  }
 };

@@ -1,4 +1,4 @@
-export const geocode = async (location) => {
+export const geocode = async (location, lang) => {
   try {
     const response = await axios.get(
       "https://us1.locationiq.com/v1/search.php",
@@ -7,6 +7,8 @@ export const geocode = async (location) => {
           q: location,
           key: "18c74e41edef57",
           format: "json",
+          "accept-language": lang,
+          normalizeaddress: 0,
         },
       }
     );
@@ -31,6 +33,7 @@ export const geocode = async (location) => {
       angle = 80;
     }
 
+    console.log(response);
     return [lat, lng, addressName, angle];
   } catch (error) {
     console.error(error);
@@ -38,9 +41,9 @@ export const geocode = async (location) => {
 };
 
 // Reverse Geocoding Function
-export const reverseGeo = async (lat, lon) => {
+export const reverseGeo = async (lat, lon, lang) => {
   try {
-    const reponse = await axios.get(
+    const response = await axios.get(
       "https://us1.locationiq.com/v1/reverse.php",
       {
         params: {
@@ -48,12 +51,15 @@ export const reverseGeo = async (lat, lon) => {
           lon: lon,
           key: "18c74e41edef57",
           format: "json",
+          "accept-language": lang,
+          normalizeaddress: 0,
         },
       }
     );
-    let nameArray = reponse.data.display_name.trim().split(",");
-
-    return nameArray[1].toString();
+    let nameArray = response.data.display_name.trim().split(",");
+    console.log(response);
+    let address = nameArray[0] + nameArray[1];
+    return address;
   } catch (error) {
     console.error(error);
   }

@@ -2,7 +2,7 @@ import { geocode, SolarIrradiation, reverseGeo } from "./API.js";
 import { startCalcul, installtionSizing } from "./calculs.js";
 import { loads, ErrorPopup } from "./component.js";
 import { mapboxFunction } from "./mapbox.js";
-import { resultTranslater } from "./lang.js";
+import { resultTranslater, languageFunction } from "./lang.js";
 
 // Select DOM Elements
 const form = document.getElementById("pv-form");
@@ -25,7 +25,8 @@ gps.addEventListener("click", async () => {
 
       let latitude = position.coords.latitude;
       let longititude = position.coords.longitude;
-      location = await reverseGeo(latitude, longititude);
+      let lang = languageFunction();
+      location = await reverseGeo(latitude, longititude, lang);
       locationInput.value = location;
       mapboxFunction(latitude, longititude);
     });
@@ -92,8 +93,10 @@ const PVSizer = async (e) => {
     location = locationInput.value;
 
     try {
+      let lang = languageFunction();
+
       // Get Data From Geocode Function
-      const [lat, lng, addressName, angle] = await geocode(location);
+      const [lat, lng, addressName, angle] = await geocode(location, lang);
 
       // Choose The Day And OrientationIn term Of Latitude
       if (lat > 0) {
