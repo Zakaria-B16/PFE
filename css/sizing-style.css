@@ -645,6 +645,19 @@ body {
 #pdf {
   position: relative;
   margin: 100px 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 #pdf * {
@@ -657,6 +670,7 @@ body {
 
 #pdf h3 {
   margin-bottom: 25px;
+  overflow: hidden;
 }
 
 #pdf .bg {

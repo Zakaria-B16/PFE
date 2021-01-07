@@ -44,22 +44,24 @@ export const geocode = async (location, lang) => {
 export const reverseGeo = async (lat, lon, lang) => {
   try {
     const response = await axios.get(
-      "https://us1.locationiq.com/v1/reverse.php",
+      "https://forward-reverse-geocoding.p.rapidapi.com/v1/reverse",
       {
         params: {
           lat: lat,
           lon: lon,
-          key: "18c74e41edef57",
           format: "json",
           "accept-language": lang,
-          normalizeaddress: 0,
+          polygon_threshold: "0.0",
+        },
+        headers: {
+          "x-rapidapi-key":
+            "b59aed3692msh1c1f16c9b7fb44fp11a4e3jsn266455edca07",
+          "x-rapidapi-host": "forward-reverse-geocoding.p.rapidapi.com",
         },
       }
     );
-    let nameArray = response.data.display_name.trim().split(",");
-    console.log(response);
-    let address = nameArray[0] + nameArray[1];
-    return address;
+    console.log(response.data);
+    return response.data.address.town;
   } catch (error) {
     console.error(error);
   }
