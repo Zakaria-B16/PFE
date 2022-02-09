@@ -74,7 +74,7 @@ export const SolarIrradiation = async (day1, day2, lat, lng) => {
       "https://api.weatherbit.io/v2.0/history/daily",
       {
         params: {
-          key: "939c54cd3e7b4ee8a9297d25aabcd350",
+          key: "0bcfc30d0f0c44fa94f4efefe9752687",
           start_date: day1,
           end_date: day2,
           lat: lat,
